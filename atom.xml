@@ -4,7 +4,7 @@
   <title><![CDATA[Clod Computing]]></title>
   <link href="http://BenjaminMalley.github.com/atom.xml" rel="self"/>
   <link href="http://BenjaminMalley.github.com/"/>
-  <updated>2013-02-22T20:41:11+00:00</updated>
+  <updated>2013-02-22T20:44:56+00:00</updated>
   <id>http://BenjaminMalley.github.com/</id>
   <author>
     <name><![CDATA[Benjamin Malley]]></name>
@@ -96,13 +96,7 @@ LVM and encrypted LVM setup, but if, for example, you want to dual boot
 Windows off of the same disk, you&#8217;re going to need to get your hands
 dirty.</p>
 
-<p>For the most part, I followed <a href="http://www.linuxbsdos.com/2011/05/10/how-to-install-ubuntu-11-04-on-an-encrypted-lvm-file-system/">this
-guide</a>,
-which is for Ubuntu and doesn&#8217;t discuss dual-booting, but was
-nonetheless useful. At least until I got to the final step. After
-selecting Finish partitioning and write changes to disk, I got a warning
-message informing me that the installer could not continue because there
-was unsafe swap space detected.</p>
+<p>For the most part, I followed <a href="http://www.linuxbsdos.com/2011/05/10/how-to-install-ubuntu-11-04-on-an-encrypted-lvm-file-system/">this guide</a>, which is for Ubuntu and doesn&#8217;t discuss dual-booting, but was nonetheless useful. At least until I got to the final step. After selecting &#8220;Finish partitioning and write changes to disk&#8221;, I got a warning message informing me that the installer could not continue because there was unsafe swap space detected.</p>
 
 <p>So what happened? Because I encrypted the entire volume group, rather
 than encrypting each logical volume group separately, the installer was
