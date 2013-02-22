@@ -4,7 +4,7 @@
   <title><![CDATA[Clod Computing]]></title>
   <link href="http://BenjaminMalley.github.com/atom.xml" rel="self"/>
   <link href="http://BenjaminMalley.github.com/"/>
-  <updated>2013-02-22T20:44:56+00:00</updated>
+  <updated>2013-02-22T21:20:40+00:00</updated>
   <id>http://BenjaminMalley.github.com/</id>
   <author>
     <name><![CDATA[Benjamin Malley]]></name>
@@ -12,6 +12,96 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Words for Friends]]></title>
+    <link href="http://BenjaminMalley.github.com/blog/2012/02/16/words-for-friends/"/>
+    <updated>2012-02-16T21:14:00+00:00</updated>
+    <id>http://BenjaminMalley.github.com/blog/2012/02/16/words-for-friends</id>
+    <content type="html"><![CDATA[<p>I&#8217;ve been playing some Words with Friends with my family. I don&#8217;t love
+the game, but I do like that my whole family&#8217;s playing it, especially
+because we&#8217;re spread out across the country.  For the uninitiated, Words
+with Friends is asynchronous Scrabble. I get a message on my phone every
+time it&#8217;s my turn, so I don&#8217;t have to pay attention to the game. That&#8217;s
+nice.</p>
+
+<p>So Tuesday was Valentine&#8217;s Day and that morning I got a &#8220;your move&#8221;
+message from Words with Friends. It was a nice holiday-themed message,
+too: Janmalley made a move on you (in Words, of course!). There was a
+little heart at the end of the message.</p>
+
+<p>To be clear, Janmalley is my mother.  Now there are people out there,
+I&#8217;m sure, who would find the unintentional connotation amusing. Oedipus
+jokes would ensue. I&#8217;m not one of those people. I found the whole thing
+pretty distasteful.</p>
+
+<p>Look, I get it. Words with Friends is a game. It&#8217;s supposed to be fun
+and light-hearted. And Valentine&#8217;s Day is a fun, light-hearted holiday.
+I&#8217;m not deleting the app or writing a nasty-gram to Zynga, but when I
+get a message telling me that my own mother has made a move on me, I
+don&#8217;t think it&#8217;s cute and fun. I just think the app sending it is dumb,
+just a brainless piece of software. It doesn&#8217;t understand me, my mother
+or why we might be playing a game together in the first place. That, in
+a nutshell, is the problem with all of these social graph applications:
+they&#8217;re really great at navigating links between people and really
+terrible at understanding those links.</p>
+
+<p>Words with Friends is so-called precisely because Zynga doesn&#8217;t have a
+clue who you&#8217;re playing it with.  This is because it&#8217;s modeled after
+Facebook, which in turn, only understands one type of connection: the
+friend. Yes, the friend, that same relationship we&#8217;ve been modeling
+since Friendster continues to be the base unit of social. To be fair,
+it&#8217;s not like there&#8217;s been no evolution at all in the last ten years.
+Facebook now lets you decorate your friend links with some metadata
+denoting a family, colleague or classmate relation, but that doesn&#8217;t
+change the fact that you still have to be someone&#8217;s friend before you
+can be their colleague.  Of course, as is obvious to anyone that&#8217;s ever
+had a job, the world doesn&#8217;t work that way.  And online, your colleagues
+should not have default access to the same personal information your
+friends or family do.  That&#8217;s silly.</p>
+
+<p>So the real problem with this model isn&#8217;t so much that I get ridiculous
+messages from Words with Friends on Valentine&#8217;s Day, but that the dumb
+friend graph severely limits the kinds of applications we can build and
+the overall usefulness of the service in all sorts of ways ranging from
+automatically filtering stories in my feed to setting sane privacy
+defaults. To be fair, this is not an easy problem to solve. The friend
+link has persisted because it&#8217;s easy to implement, users understand it
+and it avoids a some tough problems (what if you and I don&#8217;t agree about
+our relationship?).</p>
+
+<p>Google+ did a neat thing with circles, eschewing the concept of
+friendship entirely and opting for arbitrary user-defined categories.
+Circles fixes a lot of problems with the dumb friend graph.  Facebook
+has something similar with groups and Twitter has lists. The problem
+with all of these is that (a) they don&#8217;t define relationships and (b)
+even if they did, the categorizations are arbitrary and thus not able to
+be leveraged.</p>
+
+<p>For example, I have a dedicated G+ circle where I put all the people I
+don&#8217;t want to connect with but am afraid of rejecting.  Don&#8217;t worry,
+you&#8217;re not in it.  I named this group the 9th Circle because it wasn&#8217;t
+immediately obvious to me what such a group of people should be called
+and I thought I was being clever.  The name works.  Even if I somehow
+forgot what the intended purpose of the grouping was, the name itself
+signifies to me some level of danger.  To me.  To a social graph app,
+it&#8217;s meaningless.  No one is going to release Words with the 9th Circle
+anytime soon.</p>
+
+<p>So if the &#8220;friend&#8221; relationship is big and dumb and arbitrary
+categorizations can&#8217;t be meaningfully leveraged, what&#8217;s next? To be
+honest, I&#8217;m not sure, but I can&#8217;t help but feel that the social graph
+people should start paying more attention to the microformats community.
+Just look at all <a href="http://microformats.org/wiki/existing-rel-values">these</a> awesome relationship descriptors! How does Words with Neighbors sound to you? Words with Muses?</p>
+
+<p>Unfortunately, adopting a relationship descriptor standard is the easy
+part. Converting said descriptors into something that&#8217;s intuitive, safe
+(yes, safe) and useful for users is no small job. In the same way that
+the web standards thing finally happened, I think that this kind of
+standardized metadata for our relationships is the future, but it&#8217;s not
+at all clear to me how we&#8217;ll get there.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ubuntu HUD]]></title>
