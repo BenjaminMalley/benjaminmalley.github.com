@@ -4,7 +4,7 @@
   <title><![CDATA[Clod Computing]]></title>
   <link href="http://BenjaminMalley.github.com/atom.xml" rel="self"/>
   <link href="http://BenjaminMalley.github.com/"/>
-  <updated>2013-02-22T20:34:03+00:00</updated>
+  <updated>2013-02-22T20:41:11+00:00</updated>
   <id>http://BenjaminMalley.github.com/</id>
   <author>
     <name><![CDATA[Benjamin Malley]]></name>
@@ -12,6 +12,159 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu HUD]]></title>
+    <link href="http://BenjaminMalley.github.com/blog/2012/01/24/ubuntu-hud/"/>
+    <updated>2012-01-24T20:37:00+00:00</updated>
+    <id>http://BenjaminMalley.github.com/blog/2012/01/24/ubuntu-hud</id>
+    <content type="html"><![CDATA[<p>Today Mark Shuttleworth introduced what he&#8217;s calling &#8220;the future of the
+menu&#8221; &#8211; at least for Ubuntu, I guess. It&#8217;s called HUD and it&#8217;s a
+text-based interface to supplement (replace?) application menus.
+Text-based interfaces are always interesting. They&#8217;re great because they
+are fast and efficient for expert users and bad because they are really,
+really slow and inefficient for novices. These days designers typically
+eschew them in favor of GUI because targeting interfaces to expert users
+is a pretty good way to lose users.</p>
+
+<p>Though HUD is text-based, there&#8217;s reason to be optimistic about its
+suitability for the computing public.  This is because it functions more
+like web search than a traditional command line interface, inserting a
+results evaluation step in between input and execution. Typing a command
+yields a nice dropdown menu of results matching a given input from which
+the user can select the &#8220;best&#8221; match. This is a good thing.</p>
+
+<p>With one glaring exception, this gives HUD a real discoverability
+advantage over a GUI. If one wanted to discover whether a traditional
+GUI application supported a &#8220;transform&#8221; function, one would need to scan
+the menu items one by one or resort to some form of help. With HUD, the
+user can type the name of the desired action and scan the results. As a
+bonus, where the time needed to scan GUI menus increases as a function
+of the number of menu items, HUD suffers from no such problem.</p>
+
+<p>The glaring exception is that in order to use HUD successfully, users
+must first identify the correct name of the function they wish to
+invoke. If a user types &#8220;resize&#8221; instead of &#8220;transform&#8221; how will HUD
+know what that user is intending to do? GUI menus are better here
+because, although they are slow to scan, they can provide users with a
+list of possibilities which users match against their goals.</p>
+
+<p>At Adobe, we saw this first hand while observing users searching the web
+to solve problems with graphic design software: users used the search
+terms that didn&#8217;t match the application vocabulary and got unhelpful
+search results. After getting nothing from search, they returned to the
+interface and began scanning it to help identify new search terms.  HUD
+is actually worse than web search, because if you watch the video, it&#8217;s
+clearly matching program commands letter by letter, whereas Google
+employs robust information retrieval and attempts, at least, to match
+documents to more abstract &#8220;information needs.&#8221;</p>
+
+<p>This is a real problem, but one I think Ubuntu could fix. If someone is
+using HUD, we know a lot more about their intent than if they&#8217;re
+searching the web. We know what program they&#8217;re using and something
+about the state of that program.  That&#8217;s a lot, especially considering a
+typical GUI application has relatively few functions accessible at any
+one time.</p>
+
+<p>What I envision is something like this: a function that maps a user
+query to a program action by inferring user intent. So basically, less
+grep, more Google.  Imagine two components: 1) a synonym list with
+probability distributions for various program actions (HUD displays the
+actions from highest to lowest probability) and 2) a voluntary analytics
+program that tracks users to update the probabilities in (1).</p>
+
+<p>HUD is a cool idea, but in its current form, I have a hard time
+envisioning it working well for most people.  The vocabulary problem is
+real and it&#8217;s not going away.  If HUD can fix this, I think it could be
+something special.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installing Debian Wheezy on an encrypted LVM with Windows dual-boot]]></title>
+    <link href="http://BenjaminMalley.github.com/blog/2012/01/03/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot/"/>
+    <updated>2012-01-03T20:13:00+00:00</updated>
+    <id>http://BenjaminMalley.github.com/blog/2012/01/03/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot</id>
+    <content type="html"><![CDATA[<h3>UPDATE: I&#8217;ve confirmed that this issue is no longer present in the latest version of Debian testing for x86-64.</h3>
+
+<p>For a while now, Debian&#8217;s intaller has supported the Linux Logical
+Volume Manager, which allows you to replace your partitions with logical
+volumes that can be resized or extended with additional disks easily.
+You can find out more about the benefits of LVM on Wikipedia.  The
+Debian installer provides a number of automated options for a whole disk
+LVM and encrypted LVM setup, but if, for example, you want to dual boot
+Windows off of the same disk, you&#8217;re going to need to get your hands
+dirty.</p>
+
+<p>For the most part, I followed <a href="http://www.linuxbsdos.com/2011/05/10/how-to-install-ubuntu-11-04-on-an-encrypted-lvm-file-system/">this
+guide</a>,
+which is for Ubuntu and doesn&#8217;t discuss dual-booting, but was
+nonetheless useful. At least until I got to the final step. After
+selecting Finish partitioning and write changes to disk, I got a warning
+message informing me that the installer could not continue because there
+was unsafe swap space detected.</p>
+
+<p>So what happened? Because I encrypted the entire volume group, rather
+than encrypting each logical volume group separately, the installer was
+unable to detect that the swap volume was, in fact, encrypted. Now
+having an unencrypted swap space is, in face, insecure, but the refusal
+of the installer to proceed from this felt silly. Even if I was setting
+up unencrypted swap (which I wasn&#8217;t), it&#8217;s my computer. Let me do it.
+Warn me, for sure, but let me do it.</p>
+
+<p>How to proceed from this show stopper? I could re-encrypt the swap space
+at the logical volume level, but I would be prompted for yet another
+password every time I booted up, which wouldn&#8217;t be ideal. Plus, I have
+an aversion to unnecessarily complicated setups. So I went back into the
+partitioning menu and killed my swap space by selecting &#8220;do not use&#8221; and
+then I proceeded with the install.</p>
+
+<p>Debian threw up some warnings about the dangers of installing without
+swap, but having 4 GB of ram on the machine, so I wasn&#8217;t too concerned.
+Unlike with the unsafe swap space error, this didn&#8217;t prevent me from
+moving forward.  So I selected my install packages and booted into the
+new OS.</p>
+
+<p>From here, adding a swap volume is a relatively straightforward affair. You can get detailed information about your logical volumes like so:
+vgdisplay -v vg01</p>
+
+<p>If you&#8217;re following along at home, change vg01 to whatever you&#8217;ve named
+your volume group. vgdisplay lists all of the logical volumes under that
+volume group. Each entry begins with LV Name, which is that logical
+volume&#8217;s name. I had an entry for /dev/vg01/swap, which was the logical
+volume I had set aside for swap but wasn&#8217;t using. Those names will of
+course be different on every system, so all of the following commands
+should be changed to reflect that. I set up a new swap volume: <code>
+mkswap -c /dev/vg01/swap</code></p>
+
+<p>Now I&#8217;ve got a swap volume, but it&#8217;s not being used. I can verify this
+with free -m. The last line shows 0 available swap space:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Swap: 0 0 0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I could enable it by typing swapon /dev/vg01/swap, but I&#8217;d have to
+re-enable it every time I boot up. In order to enable the swap
+permanently, I edited /etc/fstab, the filesystem table to include my new
+swap volume:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/dev/mapper/vg01-swap swap swap defaults 0 0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here, the second and third entries refer to the mount point and
+filesystem type respectively and should both be swap, regardless of the
+logical volume label. Reboot the system and you&#8217;re done. After system
+boot, I typed free -m again to verify the change:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Swap: 3811 0 3811</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Gnome Shell]]></title>
@@ -93,92 +246,6 @@ paying attention.</p>
 has really wowed me. Gnome might not win any OS X converts with Shell
 but it&#8217;s about time there&#8217;s a UI on Linux that&#8217;s good instead of good
 enough.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Installing Debian Wheezy on an encrypted LVM with Windows dual-boot]]></title>
-    <link href="http://BenjaminMalley.github.com/blog/2011/01/03/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot/"/>
-    <updated>2011-01-03T20:13:00+00:00</updated>
-    <id>http://BenjaminMalley.github.com/blog/2011/01/03/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot</id>
-    <content type="html"><![CDATA[<h3>UPDATE: I&#8217;ve confirmed that this issue is no longer present in the latest version of Debian testing for x86-64.</h3>
-
-<p>For a while now, Debian&#8217;s intaller has supported the Linux Logical
-Volume Manager, which allows you to replace your partitions with logical
-volumes that can be resized or extended with additional disks easily.
-You can find out more about the benefits of LVM on Wikipedia.  The
-Debian installer provides a number of automated options for a whole disk
-LVM and encrypted LVM setup, but if, for example, you want to dual boot
-Windows off of the same disk, you&#8217;re going to need to get your hands
-dirty.</p>
-
-<p>For the most part, I followed <a href="http://www.linuxbsdos.com/2011/05/10/how-to-install-ubuntu-11-04-on-an-encrypted-lvm-file-system/">this
-guide</a>,
-which is for Ubuntu and doesn&#8217;t discuss dual-booting, but was
-nonetheless useful. At least until I got to the final step. After
-selecting Finish partitioning and write changes to disk, I got a warning
-message informing me that the installer could not continue because there
-was unsafe swap space detected.</p>
-
-<p>So what happened? Because I encrypted the entire volume group, rather
-than encrypting each logical volume group separately, the installer was
-unable to detect that the swap volume was, in fact, encrypted. Now
-having an unencrypted swap space is, in face, insecure, but the refusal
-of the installer to proceed from this felt silly. Even if I was setting
-up unencrypted swap (which I wasn&#8217;t), it&#8217;s my computer. Let me do it.
-Warn me, for sure, but let me do it.</p>
-
-<p>How to proceed from this show stopper? I could re-encrypt the swap space
-at the logical volume level, but I would be prompted for yet another
-password every time I booted up, which wouldn&#8217;t be ideal. Plus, I have
-an aversion to unnecessarily complicated setups. So I went back into the
-partitioning menu and killed my swap space by selecting &#8220;do not use&#8221; and
-then I proceeded with the install.</p>
-
-<p>Debian threw up some warnings about the dangers of installing without
-swap, but having 4 GB of ram on the machine, so I wasn&#8217;t too concerned.
-Unlike with the unsafe swap space error, this didn&#8217;t prevent me from
-moving forward.  So I selected my install packages and booted into the
-new OS.</p>
-
-<p>From here, adding a swap volume is a relatively straightforward affair. You can get detailed information about your logical volumes like so:
-vgdisplay -v vg01</p>
-
-<p>If you&#8217;re following along at home, change vg01 to whatever you&#8217;ve named
-your volume group. vgdisplay lists all of the logical volumes under that
-volume group. Each entry begins with LV Name, which is that logical
-volume&#8217;s name. I had an entry for /dev/vg01/swap, which was the logical
-volume I had set aside for swap but wasn&#8217;t using. Those names will of
-course be different on every system, so all of the following commands
-should be changed to reflect that. I set up a new swap volume: <code>
-mkswap -c /dev/vg01/swap</code></p>
-
-<p>Now I&#8217;ve got a swap volume, but it&#8217;s not being used. I can verify this
-with free -m. The last line shows 0 available swap space:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Swap: 0 0 0</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I could enable it by typing swapon /dev/vg01/swap, but I&#8217;d have to
-re-enable it every time I boot up. In order to enable the swap
-permanently, I edited /etc/fstab, the filesystem table to include my new
-swap volume:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/dev/mapper/vg01-swap swap swap defaults 0 0</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Here, the second and third entries refer to the mount point and
-filesystem type respectively and should both be swap, regardless of the
-logical volume label. Reboot the system and you&#8217;re done. After system
-boot, I typed free -m again to verify the change:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Swap: 3811 0 3811</span></code></pre></td></tr></table></div></figure>
-
-
-
 ]]></content>
   </entry>
   
