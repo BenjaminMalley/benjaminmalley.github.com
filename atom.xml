@@ -4,7 +4,7 @@
   <title><![CDATA[Clod Computing]]></title>
   <link href="http://BenjaminMalley.github.com/atom.xml" rel="self"/>
   <link href="http://BenjaminMalley.github.com/"/>
-  <updated>2013-02-22T20:15:50+00:00</updated>
+  <updated>2013-02-22T20:16:45+00:00</updated>
   <id>http://BenjaminMalley.github.com/</id>
   <author>
     <name><![CDATA[Benjamin Malley]]></name>
@@ -18,7 +18,7 @@
     <link href="http://BenjaminMalley.github.com/blog/2013/02/22/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot/"/>
     <updated>2013-02-22T20:13:00+00:00</updated>
     <id>http://BenjaminMalley.github.com/blog/2013/02/22/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot</id>
-    <content type="html"><![CDATA[<p>UPDATE: I&#8217;ve confirmed that this issue is no longer present in the latest version of Debian testing for x86-64.</p>
+    <content type="html"><![CDATA[<h3>UPDATE: I&#8217;ve confirmed that this issue is no longer present in the latest version of Debian testing for x86-64.</h3>
 
 <p>For a while now, Debian&#8217;s intaller has supported the Linux Logical Volume Manager, which allows you to replace your partitions with logical volumes that can be resized or extended with additional disks easily.  You can find out more about the benefits of LVM on Wikipedia.  The Debian installer provides a number of automated options for a whole disk LVM and encrypted LVM setup, but if, for example, you want to dual boot Windows off of the same disk, you&#8217;re going to need to get your hands dirty.</p>
 
