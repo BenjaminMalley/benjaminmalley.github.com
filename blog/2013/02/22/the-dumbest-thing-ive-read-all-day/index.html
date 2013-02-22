@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Time to end the Java hate - Clod Computing</title>
+  <meta name="author" content="Benjamin Malley">
+
+  
+  <meta name="description" content="I was just beginning to like The Verge and then bam! they published
+this
+article
+in which the author fails to differentiate between Java applets, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://BenjaminMalley.github.com/blog/2013/02/22/the-dumbest-thing-ive-read-all-day/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Clod Computing" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Clod Computing</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:BenjaminMalley.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Time to End the Java Hate</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-22T21:45:00+00:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I was just beginning to like The Verge and then <em>bam!</em> they published
+<a href="http://www.theverge.com/2013/2/22/4016582/after-so-many-hacks-why-wont-java-just-go-away">this
+article</a>
+in which the author fails to differentiate between Java <em>applets</em>, which
+were always a terrible idea and the JVM, which continues to be an
+awesome piece of kit and arrives at the completely erroneous conclusion
+that Java needs to die.</p>
+
+<p>First, let&#8217;s separate Java the language from Java the platform. Without Java the platform, we wouldn&#8217;t have Clojure,
+Scala or the Android SDK (the author admits as much). I don&#8217;t think
+there&#8217;s anyone out there in the world advocating we get rid of those, so
+that clearly needs to stay.</p>
+
+<p>This leaves us with Java the language for which there&#8217;s a lot of hate
+out in the wild. Some of this, clearly, is deserved. Java&#8217;s list of
+features is short. Type erasure was a mistake. Null pointer exceptions
+were probably a mistake. Changes to the language are slow to be
+implemented and there&#8217;s a growing sense that it&#8217;s just not catching up
+fast enough.</p>
+
+<p>I&#8217;ve been doing some Android programming lately and one of the very
+first things I did was scout around for ways to do it in anything but
+Java. There are a few options, but I decided that since what I would be
+spending most of my time with was interacting with the SDK class, I bit the bullet and dug in with Java. And in so
+doing, I found a kind of beauty. The language is minimal enough that I
+almost never have to think about <em>how</em> to accomplish something. In Java,
+there&#8217;s usually a single best way to accomplish a particular goal and
+it&#8217;s usually straightforward (although, yes, pity the cases when it is).
+Others can look at my code and understand at a glance what I am doing.</p>
+
+<p>There are those out there who would say that Scala &#8220;replaces&#8221; Java.
+Wikipedia says it was designed to be a &#8220;better&#8221; Java.  Looking at its
+feature set, I can understand why one would think it has succeeded. But,
+seriously, look
+at it: Scala is a huge hulking mess! It looks and feels exactly like a
+language that is designed to be all things to all people.
+Semi-colons are optional. The return keyword is optional. Methods can be
+called infix style.</p>
+
+<p>I don&#8217;t think Scala is bad.</p>
+
+<p>Scala supporters claim that their language fixes some of Java&#8217;s flaws.
+Wikipedia asserts that it was designed to be a &#8220;better Java.&#8221; Looking at
+the list of features, it ticks every box I could ever want for Java:
+value-oriented programming, expression-oriented programming, immutable
+collections, mixins, good concurrency support, even algebraic data types
+are in there! It&#8217;s a damn good list and if I chose programming languages
+exclusively based on those lists, I&#8217;d pick Scala over Java any day of
+the week.</p>
+
+<p>Sometimes I am, in fact, tempted to pick Scala. But every time I am,
+there&#8217;s one thing that holds me back: the language is a complete mess. I
+see Scala as something like the anti-Lisp. There&#8217;s so much syntax needed
+to support the many paradigms Semi-colons are optional. The return
+keyword is optional. For every problem there are sixteen or seventeen
+ways to approach it. I program in Haskell a lot, so I know how this
+feels.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Benjamin Malley</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-22T21:45:00+00:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://BenjaminMalley.github.com/blog/2013/02/22/the-dumbest-thing-ive-read-all-day/" data-via="" data-counturl="http://BenjaminMalley.github.com/blog/2013/02/22/the-dumbest-thing-ive-read-all-day/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/02/16/words-for-friends/" title="Previous Post: Words for Friends">&laquo; Words for Friends</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/02/22/the-dumbest-thing-ive-read-all-day/">Time to end the Java hate</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/16/words-for-friends/">Words for Friends</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/24/ubuntu-hud/">Ubuntu HUD</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot/">Installing Debian Wheezy on an encrypted LVM with Windows dual-boot</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/11/gnome-shell/">Gnome Shell</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Benjamin Malley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
