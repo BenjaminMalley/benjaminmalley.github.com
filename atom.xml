@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Clod Computing]]></title>
+  <link href="http://BenjaminMalley.github.com/atom.xml" rel="self"/>
+  <link href="http://BenjaminMalley.github.com/"/>
+  <updated>2013-02-22T19:17:45+00:00</updated>
+  <id>http://BenjaminMalley.github.com/</id>
+  <author>
+    <name><![CDATA[Benjamin Malley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Gnome Shell]]></title>
+    <link href="http://BenjaminMalley.github.com/blog/2011/11/11/gnome-shell/"/>
+    <updated>2011-11-11T18:53:00+00:00</updated>
+    <id>http://BenjaminMalley.github.com/blog/2011/11/11/gnome-shell</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>
