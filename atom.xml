@@ -4,7 +4,7 @@
   <title><![CDATA[Clod Computing]]></title>
   <link href="http://BenjaminMalley.github.com/atom.xml" rel="self"/>
   <link href="http://BenjaminMalley.github.com/"/>
-  <updated>2013-02-22T20:20:13+00:00</updated>
+  <updated>2013-02-22T20:22:24+00:00</updated>
   <id>http://BenjaminMalley.github.com/</id>
   <author>
     <name><![CDATA[Benjamin Malley]]></name>
@@ -14,10 +14,32 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Gnome Shell]]></title>
+    <link href="http://BenjaminMalley.github.com/blog/2011/11/11/gnome-shell/"/>
+    <updated>2011-11-11T18:53:00+00:00</updated>
+    <id>http://BenjaminMalley.github.com/blog/2011/11/11/gnome-shell</id>
+    <content type="html"><![CDATA[<p>I was never a huge fan of Gnome pre-Shell, preferring any of XFCE for the resource utilization, KDE for the robust feature set and more attractive UI and especially Windows, which I think is still the one to beat (take that, OS X!). After just two days of use, I&#8217;m convinced Gnome Shell changes all that. After hearing talk of &#8220;Activities&#8221;, I went in expecting needless complexity and found instead a UI that manages to reduce all of the cruft that&#8217;s accumulated over years of GUI development into a focused, minimal experience while improving functionality and aesthetics. After just a week with Gnome 3.2, I&#8217;m totally sold.</p>
+
+<p>It&#8217;s important to note that from a strict functionality perspective, Gnome Shell doesn&#8217;t break any new ground. There are no totally new UI paradigms, just some of the best ideas in desktop UI &#8211; Expose, Aero Snap, multiple desktops, search &#8211; brought together as a cohesive whole. The key breakthrough, if such it can be called, of Gnome Shell is that instead of launching each of these pieces of UI separately, the Activities view launches them all at once. It&#8217;s actually quite brilliant.
+This cohesive design makes for a rather minimal experience &#8211; so minimal that Activities is almost the only piece of UI, which has one remarkable benefit: you can&#8217;t go to the wrong menu or hit the wrong key because it simply isn&#8217;t there. If you&#8217;re working in an application and you want to switch to something else, what you need to do is hit the Activities key. Need to switch to a different Window? Hit the Activities key. Need to open a new application? Hit the Activities key. Need to do a quick Google search? Hit the Activities key. There&#8217;s more, but I&#8217;m sure you get it. For as long as we&#8217;ve had desktop UI, it&#8217;s almost mind-boggling that someone didn&#8217;t come up with this earlier.</p>
+
+<p>One drawback is that I found myself spending my first day with Gnome Shell actively looking for other UI components because there&#8217;s a constant feeling of &#8220;this can&#8217;t be all there is.&#8221; But, for the most part, what you see is what you get. One notable exception is the system shutdown menu item which requires a special keypress to reveal. I ended up having to search Google before I could shut down my machine, which is weird.</p>
+
+<p>System configuration is probably the one place where the minimalist approach fails. I&#8217;m not sure if the system settings application is the end process of some design goal or merely a work in progress, but either way it&#8217;s lacking. I had to install a 3rd party application to change some horrible font defaults and I still haven&#8217;t found a way to make web searches default to Google instead of Wikpedia. Still, even if Gnome&#8217;s designers decide not to support more advanced configuration options, I think it&#8217;s inevitable that the 3rd party tools will get better and mitigate the need for official support. I mean, it is still Linux, right?</p>
+
+<p>The next big thing in desktop environments is obviously going to be touch UI and, of course, how touch and mouse and keyboard will coexist and Gnome Shell is clearly designed with this in mind. Microsoft has also revealed their hand with Windows 8, which will essentially be two different experiences in one: a touch-friendly Metro experience alongside the traditional Windows desktop. In contrast, the Gnome team is solving this problem by redesigning individual applications for full-screen touch UI, the first of which are expected in 3.4. The crucial difference is that with Gnome&#8217;s approach, non-touch applications, like, say, Gimp, will inhabit the same space as touch apps.</p>
+
+<p>Based on what I&#8217;ve seen of both approaches, I think Gnome will get there first. Because of the focus on individual applications they neatly avoid the problem of unifying the touch and non-touch experiences. There&#8217;s a cost though, in that Microsoft&#8217;s touch experience is shaping up to be really first rate, which I think is possible precisely because they are separating it out from the traditional desktop. With Gnome, I get a sense that touch will be supported, but not necessarily catered to. Ultimately, the jury&#8217;s out on what kind of support for touch Gnome will have and how that&#8217;ll affect the overall experience, but I&#8217;m certainly paying attention.</p>
+
+<p>Honestly, this is the first time the design of an open source project has really wowed me. Gnome might not win any OS X converts with Shell but it&#8217;s about time there&#8217;s a UI on Linux that&#8217;s good instead of good enough.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Installing Debian Wheezy on an encrypted LVM with Windows dual-boot]]></title>
-    <link href="http://BenjaminMalley.github.com/blog/2013/02/22/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot/"/>
-    <updated>2013-02-22T20:13:00+00:00</updated>
-    <id>http://BenjaminMalley.github.com/blog/2013/02/22/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot</id>
+    <link href="http://BenjaminMalley.github.com/blog/2011/01/03/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot/"/>
+    <updated>2011-01-03T20:13:00+00:00</updated>
+    <id>http://BenjaminMalley.github.com/blog/2011/01/03/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot</id>
     <content type="html"><![CDATA[<h3>UPDATE: I&#8217;ve confirmed that this issue is no longer present in the latest version of Debian testing for x86-64.</h3>
 
 <p>For a while now, Debian&#8217;s intaller has supported the Linux Logical Volume Manager, which allows you to replace your partitions with logical volumes that can be resized or extended with additional disks easily.  You can find out more about the benefits of LVM on Wikipedia.  The Debian installer provides a number of automated options for a whole disk LVM and encrypted LVM setup, but if, for example, you want to dual boot Windows off of the same disk, you&#8217;re going to need to get your hands dirty.</p>
@@ -58,28 +80,6 @@ vgdisplay -v vg01</p>
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Gnome Shell]]></title>
-    <link href="http://BenjaminMalley.github.com/blog/2011/11/11/gnome-shell/"/>
-    <updated>2011-11-11T18:53:00+00:00</updated>
-    <id>http://BenjaminMalley.github.com/blog/2011/11/11/gnome-shell</id>
-    <content type="html"><![CDATA[<p>I was never a huge fan of Gnome pre-Shell, preferring any of XFCE for the resource utilization, KDE for the robust feature set and more attractive UI and especially Windows, which I think is still the one to beat (take that, OS X!). After just two days of use, I&#8217;m convinced Gnome Shell changes all that. After hearing talk of &#8220;Activities&#8221;, I went in expecting needless complexity and found instead a UI that manages to reduce all of the cruft that&#8217;s accumulated over years of GUI development into a focused, minimal experience while improving functionality and aesthetics. After just a week with Gnome 3.2, I&#8217;m totally sold.</p>
-
-<p>It&#8217;s important to note that from a strict functionality perspective, Gnome Shell doesn&#8217;t break any new ground. There are no totally new UI paradigms, just some of the best ideas in desktop UI &#8211; Expose, Aero Snap, multiple desktops, search &#8211; brought together as a cohesive whole. The key breakthrough, if such it can be called, of Gnome Shell is that instead of launching each of these pieces of UI separately, the Activities view launches them all at once. It&#8217;s actually quite brilliant.
-This cohesive design makes for a rather minimal experience &#8211; so minimal that Activities is almost the only piece of UI, which has one remarkable benefit: you can&#8217;t go to the wrong menu or hit the wrong key because it simply isn&#8217;t there. If you&#8217;re working in an application and you want to switch to something else, what you need to do is hit the Activities key. Need to switch to a different Window? Hit the Activities key. Need to open a new application? Hit the Activities key. Need to do a quick Google search? Hit the Activities key. There&#8217;s more, but I&#8217;m sure you get it. For as long as we&#8217;ve had desktop UI, it&#8217;s almost mind-boggling that someone didn&#8217;t come up with this earlier.</p>
-
-<p>One drawback is that I found myself spending my first day with Gnome Shell actively looking for other UI components because there&#8217;s a constant feeling of &#8220;this can&#8217;t be all there is.&#8221; But, for the most part, what you see is what you get. One notable exception is the system shutdown menu item which requires a special keypress to reveal. I ended up having to search Google before I could shut down my machine, which is weird.</p>
-
-<p>System configuration is probably the one place where the minimalist approach fails. I&#8217;m not sure if the system settings application is the end process of some design goal or merely a work in progress, but either way it&#8217;s lacking. I had to install a 3rd party application to change some horrible font defaults and I still haven&#8217;t found a way to make web searches default to Google instead of Wikpedia. Still, even if Gnome&#8217;s designers decide not to support more advanced configuration options, I think it&#8217;s inevitable that the 3rd party tools will get better and mitigate the need for official support. I mean, it is still Linux, right?</p>
-
-<p>The next big thing in desktop environments is obviously going to be touch UI and, of course, how touch and mouse and keyboard will coexist and Gnome Shell is clearly designed with this in mind. Microsoft has also revealed their hand with Windows 8, which will essentially be two different experiences in one: a touch-friendly Metro experience alongside the traditional Windows desktop. In contrast, the Gnome team is solving this problem by redesigning individual applications for full-screen touch UI, the first of which are expected in 3.4. The crucial difference is that with Gnome&#8217;s approach, non-touch applications, like, say, Gimp, will inhabit the same space as touch apps.</p>
-
-<p>Based on what I&#8217;ve seen of both approaches, I think Gnome will get there first. Because of the focus on individual applications they neatly avoid the problem of unifying the touch and non-touch experiences. There&#8217;s a cost though, in that Microsoft&#8217;s touch experience is shaping up to be really first rate, which I think is possible precisely because they are separating it out from the traditional desktop. With Gnome, I get a sense that touch will be supported, but not necessarily catered to. Ultimately, the jury&#8217;s out on what kind of support for touch Gnome will have and how that&#8217;ll affect the overall experience, but I&#8217;m certainly paying attention.</p>
-
-<p>Honestly, this is the first time the design of an open source project has really wowed me. Gnome might not win any OS X converts with Shell but it&#8217;s about time there&#8217;s a UI on Linux that&#8217;s good instead of good enough.</p>
 ]]></content>
   </entry>
   
