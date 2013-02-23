@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Authentication over OAuth - Clod Computing</title>
+  <meta name="author" content="Benjamin Malley">
+
+  
+  <meta name="description" content="Authorization via OAuth is a really great idea. Properly implemented, it provides adequate security in a way that&#8217;s mostly seamless to users. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://BenjaminMalley.github.com/blog/2012/02/29/authentication-over-oauth/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Clod Computing" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Clod Computing</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:BenjaminMalley.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Authentication Over OAuth</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-29T03:29:00+00:00" pubdate data-updated="true">Feb 29<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Authorization via OAuth is a really great idea. Properly implemented, it provides adequate security in a way that&#8217;s mostly seamless to users. Authentication via OAuth, on the other hand, is a really, really bad idea. Properly implemented, it encourages insecure behavior on the part of users and opens the door to malicious attacks.
+Now, to be clear, I understand that OAuth doesn&#8217;t actually handle authentication. But commonplace implementations of it allow users to authenticate in the context of an OAuth authorization. If a user wants to allow application A to access resources hosted by application B, they follow a link on A and authenticate to a login form C (supposedly hosted by C). The problem here is that some malicious entity could operate both A and C, presenting C as if it were hosted by B and collect user credentials all the live long day. Of course, OAuth pages are validated by HTTPS and CAs to prevent this kind of attack, but never mind this because users almost certainly won&#8217;t.
+To check this problem out for myself, I mocked up my own little web app which does nothing except pretend to authenticate to Facebook via OAuth. Then I got some people I knew to enter their passwords into the web form I provided by pretending I wanted to demo something I was working on.  Did the fact that I knew these people influence the likelihood that they would enter their credentials into my form? Undoubtedly. However, even if there is never a single successful OAuth phishing attempt in the wild (which I highly doubt), it&#8217;s still broken because a) it squanders inherent security advantages of the platforms it&#8217;s meant to protect and b) it encourages unsafe behavior on the part of users.
+Facebook, Twitter et al have great inherent phishing protection because users&#8217; homepages contain a great deal of personal information and are thus hard to replicate. Online banking services try to accomplish something similar by presenting users with a shared secret image or phrase at login so users know they&#8217;re logging into the correct site. Same idea, but less good because it&#8217;s much harder to remember to check for the inclusion of, say, the picture of the tree you picked out back when you created your account than it is to see if your friends are still the same people they always were and they&#8217;re still providing reasonable status updates.
+One consequence of this is that if a user is attempting to log into Facebook and has been phished, he or she is more likely to know right away.  Knowledge that one&#8217;s credentials have been compromised, while less good than not having one&#8217;s credentials compromised in the first place, is still leagues better than lack of awareness. But by shifting authentication to a special OAuth page, or worse, overlay, users aren&#8217;t redirected to their home page after a successful login, thus the advantage is squandered and the likelihood is increased that a user&#8217;s credentials can be compromised without his or her knowledge.
+But even that really doesn&#8217;t get to the heart of it. Authentication over OAuth is bad because it actively encourages unsafe practices. Users don&#8217;t know what OAuth is. They don&#8217;t care. The user experience of OAuth is divorced from the implementation. Once it becomes normative to input one&#8217;s credentials in special authorization overlays, that&#8217;s what users will do, regardless of the whether the underlying mechanism is OAuth or plain text over HTTP.
+Services that implement authentication through OAuth are doing a disservice to their users. Instead of taking advantage of the opportunity to educate users about security and improving the safety of the web for everyone, services that implement authentication over OAuth are punting, and choosing convenience over security.
+Fortunately, the remedy for this problem is simple: don&#8217;t allow your users to authenticate through OAuth. Just don&#8217;t do it. Authentication over OAuth is not fundamental to the service and can easily be replaced by a nice, user friendly message.  Something like this:
+Service X doesn&#8217;t recognize you. This isn&#8217;t a big deal, it probably just means you&#8217;re not currently logged in. If you want to authorize this application to access your Service X account, head on over to ServiceX.com and log into your account. Then try the authorization process again.
+Yes, from a UX perspective this message is less convenient than providing a log in form, but I have a hard time imaging any user experience that&#8217;s worse than having one&#8217;s account stolen.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Benjamin Malley</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-29T03:29:00+00:00" pubdate data-updated="true">Feb 29<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://BenjaminMalley.github.com/blog/2012/02/29/authentication-over-oauth/" data-via="" data-counturl="http://BenjaminMalley.github.com/blog/2012/02/29/authentication-over-oauth/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/02/16/words-for-friends/" title="Previous Post: Words for Friends">&laquo; Words for Friends</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/02/22/time-to-end-the-java-hate/" title="Next Post: Time to end the Java hate">Time to end the Java hate &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/02/22/time-to-end-the-java-hate/">Time to end the Java hate</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/authentication-over-oauth/">Authentication over OAuth</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/16/words-for-friends/">Words for Friends</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/24/ubuntu-hud/">Ubuntu HUD</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot/">Installing Debian Wheezy on an encrypted LVM with Windows dual-boot</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Benjamin Malley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

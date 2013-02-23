@@ -122,6 +122,51 @@ a funny hat. But please, put down the pitchforks.</p>
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/02/29/authentication-over-oauth/">Authentication Over OAuth</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-29T03:29:00+00:00" pubdate data-updated="true">Feb 29<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Authorization via OAuth is a really great idea. Properly implemented, it provides adequate security in a way that&#8217;s mostly seamless to users. Authentication via OAuth, on the other hand, is a really, really bad idea. Properly implemented, it encourages insecure behavior on the part of users and opens the door to malicious attacks.
+Now, to be clear, I understand that OAuth doesn&#8217;t actually handle authentication. But commonplace implementations of it allow users to authenticate in the context of an OAuth authorization. If a user wants to allow application A to access resources hosted by application B, they follow a link on A and authenticate to a login form C (supposedly hosted by C). The problem here is that some malicious entity could operate both A and C, presenting C as if it were hosted by B and collect user credentials all the live long day. Of course, OAuth pages are validated by HTTPS and CAs to prevent this kind of attack, but never mind this because users almost certainly won&#8217;t.
+To check this problem out for myself, I mocked up my own little web app which does nothing except pretend to authenticate to Facebook via OAuth. Then I got some people I knew to enter their passwords into the web form I provided by pretending I wanted to demo something I was working on.  Did the fact that I knew these people influence the likelihood that they would enter their credentials into my form? Undoubtedly. However, even if there is never a single successful OAuth phishing attempt in the wild (which I highly doubt), it&#8217;s still broken because a) it squanders inherent security advantages of the platforms it&#8217;s meant to protect and b) it encourages unsafe behavior on the part of users.
+Facebook, Twitter et al have great inherent phishing protection because users&#8217; homepages contain a great deal of personal information and are thus hard to replicate. Online banking services try to accomplish something similar by presenting users with a shared secret image or phrase at login so users know they&#8217;re logging into the correct site. Same idea, but less good because it&#8217;s much harder to remember to check for the inclusion of, say, the picture of the tree you picked out back when you created your account than it is to see if your friends are still the same people they always were and they&#8217;re still providing reasonable status updates.
+One consequence of this is that if a user is attempting to log into Facebook and has been phished, he or she is more likely to know right away.  Knowledge that one&#8217;s credentials have been compromised, while less good than not having one&#8217;s credentials compromised in the first place, is still leagues better than lack of awareness. But by shifting authentication to a special OAuth page, or worse, overlay, users aren&#8217;t redirected to their home page after a successful login, thus the advantage is squandered and the likelihood is increased that a user&#8217;s credentials can be compromised without his or her knowledge.
+But even that really doesn&#8217;t get to the heart of it. Authentication over OAuth is bad because it actively encourages unsafe practices. Users don&#8217;t know what OAuth is. They don&#8217;t care. The user experience of OAuth is divorced from the implementation. Once it becomes normative to input one&#8217;s credentials in special authorization overlays, that&#8217;s what users will do, regardless of the whether the underlying mechanism is OAuth or plain text over HTTP.
+Services that implement authentication through OAuth are doing a disservice to their users. Instead of taking advantage of the opportunity to educate users about security and improving the safety of the web for everyone, services that implement authentication over OAuth are punting, and choosing convenience over security.
+Fortunately, the remedy for this problem is simple: don&#8217;t allow your users to authenticate through OAuth. Just don&#8217;t do it. Authentication over OAuth is not fundamental to the service and can easily be replaced by a nice, user friendly message.  Something like this:
+Service X doesn&#8217;t recognize you. This isn&#8217;t a big deal, it probably just means you&#8217;re not currently logged in. If you want to authorize this application to access your Service X account, head on over to ServiceX.com and log into your account. Then try the authorization process again.
+Yes, from a UX perspective this message is less convenient than providing a log in form, but I have a hard time imaging any user experience that&#8217;s worse than having one&#8217;s account stolen.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/02/16/words-for-friends/">Words for Friends</a></h1>
     
     
@@ -564,6 +609,10 @@ enough.</p>
       </li>
     
       <li class="post">
+        <a href="/blog/2012/02/29/authentication-over-oauth/">Authentication over OAuth</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/02/16/words-for-friends/">Words for Friends</a>
       </li>
     
@@ -573,10 +622,6 @@ enough.</p>
     
       <li class="post">
         <a href="/blog/2012/01/03/installing-debian-wheezy-on-an-encrypted-lvm-with-windows-dual-boot/">Installing Debian Wheezy on an encrypted LVM with Windows dual-boot</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/11/11/gnome-shell/">Gnome Shell</a>
       </li>
     
   </ul>
