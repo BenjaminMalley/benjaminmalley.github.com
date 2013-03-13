@@ -212,6 +212,39 @@ a funny hat. But please, put down the pitchforks.</p>
 
 <p>This isn&#8217;t difficult to do in Python. Here&#8217;s how I did it:</p>
 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">atom</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+</span><span class='line'>    <span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Lock</span>
+</span><span class='line'>    <span class="n">lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">value</span> <span class="o">=</span> <span class="n">val</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">nonlocal</span> <span class="n">value</span>
+</span><span class='line'>        <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">value</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">value</span>
+</span><span class='line'>        <span class="k">finally</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="n">swap</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <p>The atom function sets the initial value of the atom and returns the swap function, which, in turn, takes a function as an argument and updates the atom&#8217;s value by setting the value to function(value). The lock provides thread safety. Note the presence of the nonlocal keyword, which means this is Python 3 only (Python 2 closures allow only read access to outer scope variables, not write access. Urg!).</p>
 
 <p>With this approach, the return value of atom() is the swap! function for the atom it defines. Therefore, swap! is invoked by calling the return value with the updating function like so:</p>
