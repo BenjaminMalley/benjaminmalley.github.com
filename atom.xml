@@ -4,7 +4,7 @@
   <title><![CDATA[Clod Computing]]></title>
   <link href="http://BenjaminMalley.github.com/atom.xml" rel="self"/>
   <link href="http://BenjaminMalley.github.com/"/>
-  <updated>2013-03-13T13:42:23+00:00</updated>
+  <updated>2013-03-13T13:48:55+00:00</updated>
   <id>http://BenjaminMalley.github.com/</id>
   <author>
     <name><![CDATA[Benjamin Malley]]></name>
@@ -373,17 +373,19 @@ Unlike with the unsafe swap space error, this didn&#8217;t prevent me from
 moving forward.  So I selected my install packages and booted into the
 new OS.</p>
 
-<p>From here, adding a swap volume is a relatively straightforward affair. You can get detailed information about your logical volumes like so:
-vgdisplay -v vg01</p>
+<p>From here, adding a swap volume is a relatively straightforward affair.
+You can get detailed information about your logical volumes with
+<code>vgdisplay -v vg01</code>.</p>
 
-<p>If you&#8217;re following along at home, change vg01 to whatever you&#8217;ve named
-your volume group. vgdisplay lists all of the logical volumes under that
-volume group. Each entry begins with LV Name, which is that logical
-volume&#8217;s name. I had an entry for /dev/vg01/swap, which was the logical
-volume I had set aside for swap but wasn&#8217;t using. Those names will of
-course be different on every system, so all of the following commands
-should be changed to reflect that. I set up a new swap volume: <code>
-mkswap -c /dev/vg01/swap</code></p>
+<p>If you&#8217;re following along at home, change <code>vg01</code> to whatever
+you&#8217;ve named your volume group. vgdisplay lists all of the logical
+volumes under that volume group. Each entry begins with LV Name, which
+is that logical volume&#8217;s name. I had an entry for
+<code>/dev/vg01/swap</code>, which was the logical volume I had set
+aside for swap but wasn&#8217;t using. Those names will of course be different
+on every system, so all of the following commands should be changed to
+reflect that. I set up a new swap volume with <code>mkswap -c
+/dev/vg01/swap</code>.</p>
 
 <p>Now I&#8217;ve got a swap volume, but it&#8217;s not being used. I can verify this
 with free -m. The last line shows 0 available swap space:</p>
@@ -392,10 +394,10 @@ with free -m. The last line shows 0 available swap space:</p>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Swap: 0 0 0</span></code></pre></td></tr></table></div></figure>
 
 
-<p>I could enable it by typing swapon /dev/vg01/swap, but I&#8217;d have to
-re-enable it every time I boot up. In order to enable the swap
-permanently, I edited /etc/fstab, the filesystem table to include my new
-swap volume:</p>
+<p>I could enable it by typing swapon <code>/dev/vg01/swap</code>, but I&#8217;d
+have to re-enable it every time I boot up. In order to enable the swap
+permanently, I edited <code>/etc/fstab</code>, the filesystem table to
+include my new swap volume:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>/dev/mapper/vg01-swap swap swap defaults 0 0</span></code></pre></td></tr></table></div></figure>
@@ -404,7 +406,7 @@ swap volume:</p>
 <p>Here, the second and third entries refer to the mount point and
 filesystem type respectively and should both be swap, regardless of the
 logical volume label. Reboot the system and you&#8217;re done. After system
-boot, I typed free -m again to verify the change:</p>
+boot, I typed <code>free -m</code> again to verify the change:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Swap: 3811 0 3811</span></code></pre></td></tr></table></div></figure>
