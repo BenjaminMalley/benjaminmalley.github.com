@@ -4,7 +4,7 @@
   <title><![CDATA[Clod Computing]]></title>
   <link href="http://BenjaminMalley.github.com/atom.xml" rel="self"/>
   <link href="http://BenjaminMalley.github.com/"/>
-  <updated>2013-02-23T03:33:07+00:00</updated>
+  <updated>2013-03-13T03:23:07+00:00</updated>
   <id>http://BenjaminMalley.github.com/</id>
   <author>
     <name><![CDATA[Benjamin Malley]]></name>
@@ -36,6 +36,78 @@ about.</p>
 <p>So by all means, kill the applets. Purge Java from laptops.  Relegate
 it to the servers, where it belongs. Make it sit in the corner and wear
 a funny hat. But please, put down the pitchforks.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Implementing Clojure's atoms in Python]]></title>
+    <link href="http://BenjaminMalley.github.com/blog/2012/06/22/clojure-atoms-in-python/"/>
+    <updated>2012-06-22T20:13:00+00:00</updated>
+    <id>http://BenjaminMalley.github.com/blog/2012/06/22/clojure-atoms-in-python</id>
+    <content type="html"><![CDATA[<p>I&#8217;ve long been a fan of Python, but I&#8217;ve recently been getting into Clojure and especially digging the concurrency features. Even though Python&#8217;s not quite as strong in the concurrency department, I figured it would be relatively easy to implement something like Clojure&#8217;s atoms in Python. And I was right, for the most part.</p>
+
+<p>For the uninitiated, atoms are Clojure&#8217;s synchronous, uncoordinated reference type. Atoms are created with the atom macro (ie. (def a (atom 0))) and modified with swap!. (swap! a fn), for example, applies the function fn to the current value of the atom a and updates a to the return value of the function. Easy, right? (This is why Clojure is so cool.)</p>
+
+<p>This isn&#8217;t difficult to do in Python. Here&#8217;s how I did it:</p>
+
+<p>The atom function sets the initial value of the atom and returns the swap function, which, in turn, takes a function as an argument and updates the atom&#8217;s value by setting the value to function(value). The lock provides thread safety. Note the presence of the nonlocal keyword, which means this is Python 3 only (Python 2 closures allow only read access to outer scope variables, not write access. Urg!).</p>
+
+<p>With this approach, the return value of atom() is the swap! function for the atom it defines. Therefore, swap! is invoked by calling the return value with the updating function like so:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="n">atom</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class='line'><span class="n">a</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In Clojure, atoms are dereferenced with a special dereferencing operator, @. We don&#8217;t have any cool tricks like that in Python. Instead, the current value of the atom is returned by the identity function:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">a</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Other than that, it pretty much works as expected.</p>
+
+<p>So here&#8217;s where the frustration set in. Experienced Pythonistas are doubtless aware of the limitations of Python&#8217;s threading implementation imposed by the Global Interpreter Lock. The Python documentation specifically states: If you want your application to make better of use of the computational resources of multi-core machines, you are advised to use multiprocessing. Multiprocessing, of course, supports the same primitives as threading, which means that in most cases, multiprocessing can be substituted for threading without major adjustments.
+There is, however, one difference between threading and multiprocessing which renders my fun atom implementation useless. Multiprocessing uses pickle to serialize objects and share them between processes and unbound methods (i.e., our swap function) are not serializable.</p>
+
+<p>Therefore, while this works just fine:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="n">atom</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">e</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">add</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Doing the same thing with a ProcessPoolExecutor throws an exception. I&#8217;d
+really like to be able to use this implementation with processes, but I
+haven&#8217;t come up with a good solution yet. Sometimes, in life as in
+Python, it&#8217;s better to just use objects and call it a day.</p>
 ]]></content>
   </entry>
   
