@@ -10,7 +10,7 @@
 
   
   <meta name="description" content="Try this little Python quiz. Given, the following Python code 1
-test = [(lambda: i) for i in range(1, 10)] what do you think the value of test0 is? &hellip;">
+test = [(lambda: i) for i in range(1, 10)] what do you think the value of test[0]() &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,7 +97,7 @@ test = [(lambda: i) for i in range(1, 10)] what do you think the value of test0 
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>what do you think the value of <code>test<a href="">0</a></code> is?</p>
+<p>what do you think the value of <code>test[0]()</code> is?</p>
 
 <p>Did you say 1? Guess again. The answer is 9. In fact, the answer does not change no matter what index you call in the test list&#8211;it&#8217;s always 9.</p>
 
@@ -109,7 +109,10 @@ test = [(lambda: i) for i in range(1, 10)] what do you think the value of test0 
 
 <p>Because function bodies <em>do</em> introduce new scopes, you can of course &#8220;resolve&#8221; this issue by creating a closure around the lambda like so</p>
 
-<p>test = [(lambda x: (lambda: x))(i) for i in range(1,10)]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">test</span> <span class="o">=</span> <span class="p">[(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">x</span><span class="p">))(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)]</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Of course, you should not write this code in Python.</p>
 </div>
