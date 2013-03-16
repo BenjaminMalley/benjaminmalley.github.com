@@ -14,6 +14,24 @@
 //$footer-bg-front: image-url('noise.png');
 //$footer-bg-back: linear-gradient(lighten($footer-bg, 8), $footer-bg, darken($footer-bg, 11));
 
+$main-bg: #ffffff !default;
+$page-bg: #ffffff !default;
+
+nav[role="navigation"] {
+    background-color: #BBB !important;
+    background-image: none !important;
+    -webkit-border-top-left-radius: 0.4em !important;
+    -webkit-border-top-right-radius: 0.4em !important;
+    -moz-border-radius-topleft: 0.4em !important;
+    -moz-border-radius-topright: 0.4em !important;
+    border-top-left-radius: 0.4em !important;
+    border-top-right-radius: 0.4em !important;
+}
+footer[role="contentinfo"] {
+    background-color: #BBB !important;
+    background-image: none !important;   
+}
+
 /*
 $header-bg: #f8f8f8;
 
