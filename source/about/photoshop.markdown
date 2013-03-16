@@ -6,7 +6,7 @@ comments: true
 sharing: true
 footer: true
 ---
-Users of graphic design software face many challenges when using the web for learning and for help. To understand and mitigate these problems, I designed and led two studies and collaborated on the development of an online help system. This project was done at Adobe’s Creative Technologies Lab under the mentorship of the awesome Mira Dontcheva.
+Users of graphic design software face many challenges when using the web for learning and for help. To understand and mitigate these problems, I designed and led two studies and collaborated on the development of an online help system. This project was done at Adobe's Creative Technologies Lab under the mentorship of the awesome Mira Dontcheva.
 In the first study, we analyzed web and query logs from Adobe.com to compare the search behavior of designers to other groups (e.g., programmers).
 
 In the second, we recruited professional and novice designers and observed them using the web to solve a series of challenging problems with Adobe Photoshop and Illustrator. For example, in the picture adjacent, we asked participants to combine the left and middle images and apply effects to match the rightmost image.
