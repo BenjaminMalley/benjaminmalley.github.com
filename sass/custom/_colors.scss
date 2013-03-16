@@ -14,7 +14,51 @@
 //$footer-bg-front: image-url('noise.png');
 //$footer-bg-back: linear-gradient(lighten($footer-bg, 8), $footer-bg, darken($footer-bg, 11));
 
+/*
+$header-bg: #f8f8f8;
 
+nav, header, html, aside, footer[role="contentinfo"], #content {
+  background-color: #f8f8f8 !important;
+  background-image: none !important;
+  border: none !important;
+}
+
+header[role="banner"] {
+  background-image: image-url("noise.png");
+  background-repeat: repeat;
+}*/
+
+header[role="banner"] * {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+  color: #0692BD !important;
+  //font-size: 1.5em;
+}
+
+.skinny {
+  font-family: "Gentium Book Basic", serif !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+}
+header[role="banner"] {
+  background-color: transparent !important;
+}
+.grid {
+  width: 100%;
+  clear: both;
+}
+.cell {
+  width: 33%;
+  float: left;
+  padding-bottom: 10px;
+}
+.cell-inner {
+  padding-right: 10px;
+}
+.badge {
+  width: 100%;
+  border: 1px solid #0692BD;
+}
 /* To use the light Solarized highlighting theme uncomment the following line */
 //$solarized: light;
 
