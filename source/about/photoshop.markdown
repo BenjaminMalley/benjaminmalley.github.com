@@ -1,11 +1,11 @@
 ---
 layout: page
 title: "Photoshop with Friends"
-date: 2013-03-16 20:26
 comments: true
 sharing: true
 footer: true
 ---
+{% img right /images/photoshop-task.png %}
 Users of graphic design software face many challenges when using the web for learning and for help. To understand and mitigate these problems, I designed and led two studies and collaborated on the development of an online help system. This project was done at Adobe's Creative Technologies Lab under the mentorship of the awesome Mira Dontcheva.
 In the first study, we analyzed web and query logs from Adobe.com to compare the search behavior of designers to other groups (e.g., programmers).
 
