@@ -34,7 +34,7 @@ outWord, a location-based word game for the iPhone.</p>
   <div class="cell">
     <div class="cell-inner">
       <div class="badge">
-        Photoshop with Friends
+        <a href="photoshop.html">Photoshop with Friends</a>
       </div>
       <p>I was a researcher on a system designed to mitigate the
 difficulties encountered when searching the web for help with graphic
@@ -44,7 +44,7 @@ design tasks by providing just-in-time context-aware help.</p>
   <div class="cell">
     <div class="cell-inner">
       <div class="badge">
-        Feedback Channels
+        <a href="feedback.html">Feedback Channels</a>
       </div>
       <p>As part of a 5-person team, I designed a web application that
 allows students to give feedback and ask questions during lectures
@@ -61,7 +61,7 @@ without interrupting class</p>
   <div class="cell">
     <div class="cell-inner">
       <div class="badge">
-        en route
+        <a href="swoopo.html">Swoopo network analysis</a>
       </div>
     </div>
   </div>
