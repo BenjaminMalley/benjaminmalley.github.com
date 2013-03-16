@@ -15,7 +15,7 @@ deep fondness for Haskell. I don't mind being paid in pizza.
   <div class="cell">
     <div class="cell-inner">
       <div class="badge">
-        en route
+        <a href="enroute.html">en route</a>
       </div>
       <p>I am designing a mobile web app that allows users to share
 their location during trips, for example, when picking someone up from
@@ -25,7 +25,7 @@ the airport</p>
   <div class="cell">
     <div class="cell-inner">
       <div class="badge">
-        outWord
+        <a href="outword.html">outWord</a>
       </div>
       <p>As part of a four-person team, I designed and developed
 outWord, a location-based word game for the iPhone.</p>
