@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "en route: A trip-based location sharing app"
+title: "en route: trip-based location sharing"
 comments: true
 sharing: true
 footer: true
@@ -13,7 +13,7 @@ There are other apps that do similar things (Find My Friends, etc.), but *en rou
 
 This app is based around Google Maps (which it uses for routing) and Twitter (which it uses for location sharing), though I am planning on adopting additional mechanisms for sharing.
 
-To build *en route*, I started by talking with people I knew about the kinds of use cases I envisioned. From these discussions, I developed a set of personas and scenarios. Then I made some wireframes and conducted user testing, before building out a functional HTML5 prototype which is hosted [here](enroute.herokuapp.com). I am currently developing a more fully featured Android version of the application.
+To build *en route*, I started by talking with people I knew about the kinds of use cases I envisioned. From these discussions, I developed a set of personas and scenarios. Then I made some wireframes and conducted user testing, before building out a functional HTML5 prototype which is hosted [here](http://enroute.herokuapp.com). I am currently developing a more fully featured Android version of the application.
 
 On the tech side: *en route* is built with using the Flask framework and Redis on the backend and a minimal HTML5/jQuery front end.
  
