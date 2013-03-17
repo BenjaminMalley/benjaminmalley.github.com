@@ -14,9 +14,9 @@ deep fondness for Haskell. I don't mind being paid in pizza.
 <div class="grid">
   <div class="cell">
     <div class="cell-inner">
-      <div class="badge">
+      <div class="badge" id="enroute">
         <div class="project_title">
-          <a href="enroute.html" id="enroute">en route</a>
+          <a href="enroute.html">en route</a>
         </div>
       </div>
       <p>I am designing a mobile web app that allows users to share
@@ -63,7 +63,7 @@ without interrupting class</p>
     <div class="cell-inner">
       <div class="badge" id="imagesmart">
         <div class="project_title">
-          ImageSmart
+          <a href="#">ImageSmart</a>
         </div>
       </div>
       <p>I am currently designing a clinical decision support system to empower physicians and reduce patient demand for inappropriate medicine.</p>
