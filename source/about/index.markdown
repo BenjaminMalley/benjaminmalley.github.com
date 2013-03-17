@@ -11,6 +11,8 @@ information visualization and solving UX problems in health care. On the
 tech side, I do Python (Django, Flask) and JS (d3, Angular) and I have a
 deep fondness for Haskell. I don't mind being paid in pizza.
 
+Take a look at some of my current and previous projects below.
+
 <div class="grid">
   <div class="cell">
     <div class="cell-inner">
