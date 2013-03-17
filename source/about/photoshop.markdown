@@ -8,7 +8,7 @@ footer: true
 
 Users of graphic design software face many challenges when using the web for learning and for help. To understand and mitigate these problems, I designed and led two studies and collaborated on the development of <a href="/assets/photoshop.pdf">Photoshop with Friends</a> (PDF), an online help system. This project was done at Adobe's Creative Technologies Lab under the mentorship of the awesome Mira Dontcheva.
 
-{% img left /images/adobe-queries.png %}
+{% img right /images/adobe-queries.png %}
 In the first study, we analyzed web and query logs from Adobe.com to compare the search behavior of designers to other groups (e.g., programmers). For example, we compared the search queries of programmers and designers and found that, on average, designers used more keywords.
 
 {% img right /images/photoshop-task.png %}
