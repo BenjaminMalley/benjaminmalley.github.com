@@ -11,7 +11,7 @@ information visualization and solving UX problems in health care. On the
 tech side, I do Python (Django, Flask) and JS (d3, Angular) and I have a
 deep fondness for Haskell. I don't mind being paid in pizza.
 
-I am currently an analyst and consultant at Altarum in Ann Arbor, MI where I **advise clients** on the workflow impact, user experience and population-level health outcomes of health information systems and **build** new systems to address these needs.
+I am currently an analyst and consultant at Altarum in Ann Arbor, MI where I **advise clients** on the workflow impact, user experience and population-level health outcomes of health information systems and **build new systems** to address these needs. I am looking to relocate to Portland, OR in 2013.
 
 Take a look at some of my current and previous projects below.
 
@@ -67,7 +67,7 @@ without interrupting class</p>
     <div class="cell-inner">
       <div class="badge" id="imagesmart">
         <div class="project_title">
-          <a href="#">ImageSmart</a>
+          <a href="imagesmart.html">ImageSmart</a>
         </div>
       </div>
       <p>I am currently designing a clinical decision support system to empower physicians and reduce patient demand for inappropriate medicine.</p>
