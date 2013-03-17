@@ -2,7 +2,7 @@
 layout: page
 title: "Feedback Channels"
 comments: true
-sharing: true
+sharing: false
 footer: true
 ---
 {% img right /images/feedback-persona.png %}

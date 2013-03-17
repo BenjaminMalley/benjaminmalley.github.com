@@ -2,7 +2,7 @@
 layout: page
 title: "Swoopo.com analysis"
 comments: true
-sharing: true
+sharing: false
 footer: true
 ---
 {% img right /images/swoopo.png %}

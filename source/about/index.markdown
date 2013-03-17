@@ -2,7 +2,7 @@
 layout: page
 title: "About Me"
 comments: true
-sharing: true
+sharing: false
 footer: true
 ---
 I am a **software developer** and **user researcher** which broadly means that I believe

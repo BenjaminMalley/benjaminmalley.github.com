@@ -2,7 +2,7 @@
 layout: page
 title: "ImageSmart"
 comments: true
-sharing: true
+sharing: false
 footer: true
 ---
 Inappropriate use of radiological studies (inappropriate imaging) is a noted problem in today's health care landscape that causes increased spending and increased patient risk without any corresponding increase in population-level health outcomes.

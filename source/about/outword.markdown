@@ -2,7 +2,7 @@
 layout: page
 title: "Encouraging Walking with a Social Game"
 comments: true
-sharing: true
+sharing: false
 footer: true
 ---
 {% img right /images/outword.png %}

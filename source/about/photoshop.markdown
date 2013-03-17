@@ -2,7 +2,7 @@
 layout: page
 title: "Photoshop with Friends"
 comments: true
-sharing: true
+sharing: false
 footer: true
 ---
 

@@ -2,7 +2,7 @@
 layout: page
 title: "en route: trip-based location sharing"
 comments: true
-sharing: true
+sharing: false
 footer: true
 ---
 {% img right /images/enroute.png %}
