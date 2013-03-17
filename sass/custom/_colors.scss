@@ -91,6 +91,22 @@ header[role="banner"] {
 .badge:hover {
   border: 1px solid #0692BD;
 }
+.project_title {
+  width: 100%;
+  background-color: #000;
+  color: #FFF;
+  opacity: .8;
+  margin-top: 25%;
+  height: 100px;
+  line-height: 175%;
+}
+.project_title a {
+  color: #FFF;
+}
+.project_title a:hover {
+  color: #FFF;
+  text-decoration: none;
+}
 /* To use the light Solarized highlighting theme uncomment the following line */
 //$solarized: light;
 
