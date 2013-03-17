@@ -8,7 +8,7 @@ footer: true
 I am a **software developer** and **user researcher** which broadly means that I believe
 users are more important than monads. I am particularly interested in
 information visualization and solving UX problems in health care. On the
-tech side, I do Python (Django, Flask) and JS (d3, Angular) and I have a
+tech side, I mostly do Python (Django, Flask) and JS (d3, Angular), but I have a
 deep fondness for Haskell. I don't mind being paid in pizza.
 
 I am currently an analyst and consultant at Altarum in Ann Arbor, MI where I **advise clients** on the workflow impact, user experience and population-level health outcomes of health information systems and **build new systems** to address these needs. I am looking to relocate to Portland, OR in 2013.
