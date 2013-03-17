@@ -10,7 +10,7 @@ Inappropriate use of radiological studies (inappropriate imaging) is a noted pro
 
 Although many of the technological hurdles to reducing inappropriate imaging have been in place for a number of years, they are not well integrated with existing primary care physician workflows and, as such, are not widely adopted outside of the hospital setting.
 
-To solve this problem, in 2012 I led the development of a proposal to reduce inappropriate imaging in a primary care setting through patient education, clinical decision support and health information exchange. In July of 2012, Altarum was awarded an <a href=”http://innovation.cms.gov/initiatives/Health-Care-Innovation-Awards/Michigan.html”>$8 million innovation grant</a> from CMS to carry out this program over a three year period.
+To solve this problem, in 2012 I led the development of a proposal to reduce inappropriate imaging in a primary care setting through patient education, clinical decision support and health information exchange. In July of 2012, Altarum was awarded an <a href="http://innovation.cms.gov/initiatives/Health-Care-Innovation-Awards/Michigan.html">$8 million innovation grant</a> from CMS to carry out this program over a three year period.
 
 As part of this grant, we are building a clinical decision support system and information exchange which is better integrated with the physician workflow. I am directly responsible for user research, prototyping and front development of the clinical decision support system.
 
