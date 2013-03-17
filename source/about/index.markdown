@@ -5,7 +5,7 @@ comments: true
 sharing: true
 footer: true
 ---
-I am a software developer and user researcher which broadly means that I believe
+I am a **software developer** and **user researcher** which broadly means that I believe
 users are more important than monads. I am particularly interested in
 information visualization and solving UX problems in health care. On the
 tech side, I do Python (Django, Flask) and JS (d3, Angular) and I have a
