@@ -2,12 +2,32 @@ $serif: "Gentium Book Basic", serif;
 $sans: "Open Sans", sans-serif;
 
 #main {
-    background: #EEE !important;
+  background: #EEE !important;
 }
 
 /*.entry-title {
-    font-family: "Open Sans" !important;
+  font-family: "Open Sans" !important;
 }*/
+
+#photoshop {
+  background-image: url("/images/photoshop-task.png"); 
+}
+#outword {
+  background-image: url("/images/outword.png");
+}
+#swoopo {
+  background-image: url("/images/swoopo-multiples.png");
+} 
+#feedback {
+  background-image: url("/images/feedback.png");   
+}
+#imagesmart {
+
+}
+#enroute {
+  background-image: url("/images/enroute.png");
+}
+
 
 nav[role="navigation"] {
     background-color: #BBB !important;
@@ -54,6 +74,21 @@ header[role="banner"] {
 }
 .badge {
   width: 100%;
+  height: 80px;
+  min-width: 100px;
+  overflow: hidden;
+  border: 1px solid #cdcdcd;
+  margin-bottom: 5px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: #FFF;
+  -webkit-transition: all 150ms ease-in;
+  -moz-transition: all 150ms ease-in;
+  -o-transition: all 150ms ease-in;
+  -ms-transition: all 150ms ease-in;
+  transition: all 150ms ease-in;
+}
+.badge:hover {
   border: 1px solid #0692BD;
 }
 /* To use the light Solarized highlighting theme uncomment the following line */
