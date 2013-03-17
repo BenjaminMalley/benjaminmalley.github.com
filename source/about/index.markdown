@@ -74,9 +74,10 @@ without interrupting class</p>
       <div class="badge" id="swoopo">
         <div class="project_title">
           <a href="swoopo.html">Swoopo network analysis</a>
-          <p>I analyzed bid data from Swoopo.com to gauge the efficacy of automated bidding systems and identify possible collusions.</p>
+
         </div>
       </div>
+      <p>I analyzed bid data from Swoopo.com to gauge the efficacy of automated bidding systems and identify possible collusions.</p>
     </div>
   </div>
 </div>
