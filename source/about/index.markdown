@@ -81,3 +81,4 @@ without interrupting class</p>
     </div>
   </div>
 </div>
+<div class="cf"></div>
