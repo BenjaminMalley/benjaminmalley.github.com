@@ -1,0 +1,92 @@
+Benjamin Malley
+benjaminmalley.github.com/about
+
+I am a software developer and user experience professional with over five years of experience researching, managing and implementing software solutions to solve business problems. I am comfortable with a variety of tools and technologies for both web and mobile development.
+
+SKILLS
+Software development
+Agile development
+Python (Django, Flask)
+JavaScript (jQuery, d3, Angular)
+Haskell
+Java (Android SDK)
+Databases (MySQL, MongoDB, Redis)
+HTML5 & CSS (Bootstrap)
+Version control (git)
+Wireframing / Prototyping
+User research / Contextual inquiry
+Survey design
+Usability testing
+Data analysis
+Information visualization
+Social network analysis
+R (ggplot2, igraph)
+Python (numpy, scipy)
+Web analytics (Google analytics)
+
+EDUCATION
+University of Michigan, MS in Information – Human-Computer Interaction (April 2010)
+    President, School of Information Student Association (2009 – 2010)
+    Member, Provost's Student Academic Advisory Board (2009 – 2010)
+Warren Wilson College, BA in Mathematics (May 2005)
+
+EXPERIENCE
+
+Analyst, Altarum Institute (May 2011 – Present)
+
+ I conduct analysis of health information systems to inform and advise clients on workflow impact, user
+ experience and effect on population-level health outcomes.
+
+ I am currently designing a clinical decision support system to empower physicians and reduce patient
+ demand for inappropriate medicine. I am directly responsible for user research, prototyping and front-end
+ development (using Bootstrap and Angular).
+
+ I led the development of an $8.5 million, 3-year program to reduce inappropriate imaging in Michigan's
+ largest provider organizations, managing a five-person team in conducting research, developing a business
+ case and operations plan, and establishing partnerships with clinical leaders.
+
+Research Intern, Adobe Creative Technologies Lab (June 2010 - September 2010)
+ 
+ To identify and solve problems faced by users of Adobe Photoshop and Illustrator, I designed and led a user
+ study and analyzed data from Adobe.com. I provided usability and user experience analysis to product leads
+ for Photoshop and collaborated on the design of Photoshop with Friends, a social learning tool.
+ 
+Co-founder, Phonagle LLC (April 2009 – June 2010)
+ 
+ As part of a four-person team, I developed outWord, a location-based word game for the iPhone with more
+ than 10,000 downloads. We won the 2009 RPM Ventures business competition ($20,000 award),
+ competing against more than 35 startups. I was responsible for both front end code in Objective-C and
+ server-side code using Python's Django framework.
+ 
+Associate, PricewaterhouseCoopers (May 2006 – June 2008)
+ 
+ To support business IT objectives, I performed systems analysis, evaluation of vendor solutions and user
+ testing for the implementation of new data and infrastructure management systems.
+ 
+Web Developer, University of Michigan (July 2005 – April 2006)
+ I designed a new web portal for a research department using JavaScript, HTML and CSS.
+ 
+SELECTED PROJECTS
+
+en route
+ 
+ I designed and developed a mobile web application that allows users to share their location during a trip, for
+ example when picking someone up from the airport. To iterate on the design, I developed and conducted
+ user studies on wireframes and functional prototypes.
+
+Feedback channels: real-time feedback for the classroom (class project)
+ 
+ As part of a five-person team, I designed a web application that allows students to give feedback and ask
+ questions during lectures without interrupting class.  We incorporated surveys, personas and scenarios
+ and user studies into our design.
+
+Photoshop with Friends: A Synchronous Learning Community for Graphic Design. Juho Kim, Benjamin
+Malley, Joel Brandt, Mira Dontcheva, Diana Joseph, Krzysztof Z. Gajos, and Robert C. Miller. CSCW 2012
+Interactive Demo, Seattle, USA 2012.
+ 
+ I was a contributor to a system designed mitigate the difficulties encountered when searching the web for
+ help with graphic design tasks by providing just-in-time context-aware help.
+
+Haskell statistics (open source contribution)
+ 
+ I contributed code to the Haskell statistics library to efficiently compute probability distributions.
