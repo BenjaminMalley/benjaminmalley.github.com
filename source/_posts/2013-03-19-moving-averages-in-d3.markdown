@@ -13,7 +13,7 @@ categories:
 
 var n = 100; //number of data elements
 var w = 800; var h = 100; //plot size
-var rate = .5; //discounting factor
+var rate = .2; //discounting factor
 
 document.querySelector("#rate").addEventListener("change", function() {
   rate = +document.querySelector("#rate").value; //look ma, no jQuery!
@@ -108,9 +108,9 @@ var tick = function() {
 tick();
 
 </script>
-Moving averages are a nice, easy to understand technique for dampening fluctuations in time series data to emphasize long term trends. They are used, for example, in networks to . . . . In this post, I'll walk through adding an exponentially weighted moving average to a scrolling time series visualization in d3.
+Moving averages are a nice, easy to understand technique for dampening fluctuations in time series data to emphasize long term trends. They are used, for example, in networks to assess traffic patterns and deal with congestion. In this post, I'll walk through adding an exponentially weighted moving average to a scrolling time series visualization in d3.
 
-To begin, we need some time series data. Here I'm going to cheat and just use the random walk function provided [in the d3 tutorial]().
+To begin, we need some time series data. Here I'm going to cheat and just use the random walk function provided [in the d3 tutorial](http://mbostock.github.com/d3/tutorial/bar-2.html).
 
 ``` javascript
 var next_data = (function() {
@@ -159,7 +159,7 @@ var datapath = plot.append("path")
 
 The noteworthy bits are ```plot```, which appends an SVG element to an empty div in the DOM, ```area```, which is a built in d3 layout for, you guessed it, area plots and ```datapath``` which binds the data to an SVG path using the area layout that was just defined.
 
-So how then to update the plot dynamically as new data comes in? We need some a repeating function that ```push``es the new data onto the array, ```shift```s off the oldest element and updates the path. The tricky bit involves how d3's interpolators interact with SVG spec and rather than go into it, I'll let Mike himself [explain](http://bost.ocks.org/mike/path/). 
+So how then to update the plot dynamically as new data comes in? We need some a repeating function that ```push```es the new data onto the array, ```shift```s off the oldest element and updates the path. The tricky bit involves how d3's interpolators interact with SVG spec and rather than go into it, I'll let Mike himself [explain](http://bost.ocks.org/mike/path/). 
 
 ``` javascript
 
@@ -213,3 +213,5 @@ document.querySelector("#rate").addEventListener("change", function() {
 ```
 
 It's that easy. If you play around with the slider, you can see how the moving average changes. When the discounting factor goes to 0, we ignore all new inputs from the data set, resulting in a straight line from the last average value. When it goes to 1, we ignore the average values track the actual data set. I absolutely d3 for stuff like this.
+
+The code for this post is available [here](https://gist.github.com/BenjaminMalley/5199759).
