@@ -11,7 +11,7 @@
   
   <meta name="description" content="var n = 100; //number of data elements
 var w = 800; var h = 100; //plot size
-var rate = .5; //discounting factor document.querySelector("#rate"). &hellip;">
+var rate = .2; //discounting factor document.querySelector("#rate"). &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -117,7 +117,7 @@ INTERNET</span></h2>
 
 var n = 100; //number of data elements
 var w = 800; var h = 100; //plot size
-var rate = .5; //discounting factor
+var rate = .2; //discounting factor
 
 document.querySelector("#rate").addEventListener("change", function() {
   rate = +document.querySelector("#rate").value; //look ma, no jQuery!
@@ -214,9 +214,9 @@ tick();
 </script>
 
 
-<p>Moving averages are a nice, easy to understand technique for dampening fluctuations in time series data to emphasize long term trends. They are used, for example, in networks to &#8230; . In this post, I&#8217;ll walk through adding an exponentially weighted moving average to a scrolling time series visualization in d3.</p>
+<p>Moving averages are a nice, easy to understand technique for dampening fluctuations in time series data to emphasize long term trends. They are used, for example, in networks to assess traffic patterns and deal with congestion. In this post, I&#8217;ll walk through adding an exponentially weighted moving average to a scrolling time series visualization in d3.</p>
 
-<p>To begin, we need some time series data. Here I&#8217;m going to cheat and just use the random walk function provided <a href="">in the d3 tutorial</a>.</p>
+<p>To begin, we need some time series data. Here I&#8217;m going to cheat and just use the random walk function provided <a href="http://mbostock.github.com/d3/tutorial/bar-2.html">in the d3 tutorial</a>.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -297,7 +297,7 @@ tick();
 
 <p>The noteworthy bits are <code>plot</code>, which appends an SVG element to an empty div in the DOM, <code>area</code>, which is a built in d3 layout for, you guessed it, area plots and <code>datapath</code> which binds the data to an SVG path using the area layout that was just defined.</p>
 
-<p>So how then to update the plot dynamically as new data comes in? We need some a repeating function that <code>push``es the new data onto the array,</code>shift&#8220;`s off the oldest element and updates the path. The tricky bit involves how d3&#8217;s interpolators interact with SVG spec and rather than go into it, I&#8217;ll let Mike himself <a href="http://bost.ocks.org/mike/path/">explain</a>.</p>
+<p>So how then to update the plot dynamically as new data comes in? We need some a repeating function that <code>push</code>es the new data onto the array, <code>shift</code>s off the oldest element and updates the path. The tricky bit involves how d3&#8217;s interpolators interact with SVG spec and rather than go into it, I&#8217;ll let Mike himself <a href="http://bost.ocks.org/mike/path/">explain</a>.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -369,6 +369,8 @@ document.querySelector(&#8220;#rate&#8221;).addEventListener(&#8220;change&#8221
 &#8220;`</p>
 
 <p>It&#8217;s that easy. If you play around with the slider, you can see how the moving average changes. When the discounting factor goes to 0, we ignore all new inputs from the data set, resulting in a straight line from the last average value. When it goes to 1, we ignore the average values track the actual data set. I absolutely d3 for stuff like this.</p>
+
+<p>The code for this post is available <a href="https://gist.github.com/BenjaminMalley/5199759">here</a>.</p>
 </div>
 
 
