@@ -4,7 +4,7 @@
   <title><![CDATA[Clod Computing]]></title>
   <link href="http://BenjaminMalley.github.com/atom.xml" rel="self"/>
   <link href="http://BenjaminMalley.github.com/"/>
-  <updated>2013-03-19T20:41:22+00:00</updated>
+  <updated>2013-03-19T20:44:46+00:00</updated>
   <id>http://BenjaminMalley.github.com/</id>
   <author>
     <name><![CDATA[Benjamin Malley]]></name>
@@ -22,7 +22,7 @@
 
 
 <p><form id="adjust">
-  <input id="rate" type="range" min="0" max="1" step=".05" value=".5">
+  <input id="rate" type="range" min="0" max="1" step=".05" value=".25">
 </form></p>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -32,7 +32,7 @@
 
 var n = 100; //number of data elements
 var w = 800; var h = 100; //plot size
-var rate = .2; //discounting factor
+var rate = .25; //discounting factor
 
 document.querySelector("#rate").addEventListener("change", function() {
   rate = +document.querySelector("#rate").value; //look ma, no jQuery!
@@ -217,71 +217,105 @@ tick();
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="err">```</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">tick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 </span><span class='line'>
-</span><span class='line'><span class="nx">Now</span><span class="p">,</span> <span class="nx">onto</span> <span class="nx">moving</span> <span class="nx">averages</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">nice</span> <span class="nx">thing</span> <span class="nx">about</span> <span class="nx">using</span> <span class="nx">the</span> <span class="nx">exponentially</span> <span class="nx">weighted</span> <span class="nx">moving</span> <span class="nx">average</span> <span class="nx">is</span> <span class="nx">that</span> <span class="nx">it</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">computed</span> <span class="nx">recursively</span><span class="p">.</span> <span class="nx">We</span> <span class="nx">can</span> <span class="nx">take</span> <span class="nx">advantage</span> <span class="nx">of</span> <span class="k">this</span> <span class="nx">fact</span> <span class="nx">to</span> <span class="nx">precompute</span> <span class="nx">an</span> <span class="nx">array</span> <span class="nx">of</span> <span class="nx">moving</span> <span class="nx">average</span> <span class="nx">values</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">initial</span> <span class="nx">data</span> <span class="nx">and</span> <span class="nx">then</span><span class="p">,</span> <span class="nx">anytime</span> <span class="nx">we</span> <span class="nx">need</span> <span class="nx">a</span> <span class="k">new</span> <span class="nx">moving</span> <span class="nx">average</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">compute</span> <span class="nx">it</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">last</span> <span class="nx">moving</span> <span class="nx">average</span> <span class="nx">value</span><span class="p">.</span> <span class="nx">It</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">easier</span> <span class="nx">to</span> <span class="nx">see</span> <span class="k">in</span> <span class="nx">code</span><span class="o">:</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">nd</span> <span class="o">=</span> <span class="nx">next_data</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">data</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">nd</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">datapath</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="nx">area</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">transition</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">duration</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">ease</span><span class="p">(</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span> <span class="s2">&quot;translate(&quot;</span> <span class="o">+</span> <span class="nx">x</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="nx">tick</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">data</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p> javascript
-var next_avg = function(next, prev, discount) {
-  //compute the next avg from the previous avg, using the discounting factor
-  return next * discount + prev * (1 - discount);
-};</p>
+<p>Now, onto moving averages. The nice thing about using the exponentially weighted moving average is that it can be computed recursively. We can take advantage of this fact to precompute an array of moving average values from the initial data and then, anytime we need a new moving average value, compute it from the last moving average value. It&#8217;s easier to see in code:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">Here</span><span class="p">,</span> <span class="err">```</span><span class="nx">next</span><span class="err">```</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">latest</span> <span class="nx">data</span> <span class="nx">point</span> <span class="nx">and</span> <span class="err">```</span><span class="nx">prev</span><span class="err">```</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">last</span> <span class="nx">moving</span> <span class="nx">average</span> <span class="nx">that</span> <span class="nx">was</span> <span class="nx">computed</span> <span class="p">(</span><span class="nx">the</span> <span class="nx">element</span> <span class="nx">at</span> <span class="nx">index</span> <span class="err">```</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="err">```</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">array</span> <span class="nx">of</span> <span class="nx">averages</span><span class="p">).</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">Just</span> <span class="nx">like</span> <span class="nx">we</span> <span class="nx">did</span> <span class="kd">with</span> <span class="nx">the</span> <span class="nx">initial</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">we</span> <span class="nx">can</span> <span class="nx">use</span> <span class="k">this</span> <span class="kd">function</span> <span class="nx">to</span> <span class="nx">build</span> <span class="nx">up</span> <span class="nx">an</span> <span class="nx">initial</span> <span class="nx">array</span> <span class="nx">of</span> <span class="nx">averages</span> <span class="nx">as</span> <span class="nx">well</span><span class="p">.</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">next_avg</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">next</span><span class="p">,</span> <span class="nx">prev</span><span class="p">,</span> <span class="nx">discount</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">//compute the next avg from the previous avg, using the discounting factor</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">next</span> <span class="o">*</span> <span class="nx">discount</span> <span class="o">+</span> <span class="nx">prev</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="nx">discount</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p> javascript
-var averages = (function(d, a) {
-  //this is the impossibly long form of reduce :(
-  var current = d[0]; //base case = first value in the data set
-  var avg = [];
-  avg.push(d[0].value);
-  for (var i = 1; i &lt; d.length; i++) {</p>
+<p>Here, <code>next</code> is the latest data point and <code>prev</code> is the last moving average that was computed (the element at index <code>length - 1</code> in the array of averages).</p>
 
-<pre><code>avg.push(current);
-current = next_avg(d[i], current, a);
-</code></pre>
-
-<p>  }
-  return avg;
-})(data, rate);</p>
+<p>Just like we did with the initial data, we can use this function to build up an initial array of averages as well.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">Note</span> <span class="nx">that</span> <span class="nx">we</span> <span class="nx">begin</span> <span class="nx">by</span> <span class="nx">assigning</span> <span class="err">```</span><span class="nx">current</span><span class="err">```</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">first</span> <span class="nx">data</span> <span class="nx">element</span><span class="p">.</span> <span class="nx">We</span> <span class="k">do</span> <span class="k">this</span> <span class="nx">because</span><span class="p">,</span> <span class="nx">since</span> <span class="nx">we</span><span class="s1">&#39;re using a recursive definition, we need a base case! In truth, there are other techniques we might have used, for example, making the base case equal to the average of the first n elements, but this way is simple and clear.</span>
-</span><span class='line'>
-</span><span class='line'><span class="s1">Now that we have a seed array of moving averages, we just need to plot it dynamically as with the data array. The code is largely the same as before. We can reuse the x and y scales I used a line instead of an area.</span>
-</span><span class='line'>
-</span><span class='line'><span class="s1">OK, so for one last hurrah, let&#39;</span><span class="nx">s</span> <span class="nx">add</span> <span class="nx">a</span> <span class="nx">slider</span> <span class="nx">so</span> <span class="nx">that</span> <span class="nx">we</span> <span class="nx">can</span> <span class="nx">adjust</span> <span class="nx">the</span> <span class="nx">discount</span> <span class="nx">factor</span><span class="p">.</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">averages</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">//this is the impossibly long form of reduce :(</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">current</span> <span class="o">=</span> <span class="nx">d</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">//base case = first value in the data set</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">avg</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>  <span class="nx">avg</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">d</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">avg</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">current</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">current</span> <span class="o">=</span> <span class="nx">next_avg</span><span class="p">(</span><span class="nx">d</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">current</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">avg</span><span class="p">;</span>
+</span><span class='line'><span class="p">})(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">rate</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p> html
-<form id="adjust">
-  <input id="rate" type="range" min="0" max="1" step=".05" value=".5">
-</form></p>
+<p>Note that we begin by assigning <code>current</code> to the value of the first data element. We do this because, since we&#8217;re using a recursive definition, we need a base case! In truth, there are other techniques we might have used, for example, making the base case equal to the average of the first n elements, but this way is simple and clear.</p>
+
+<p>Now that we have a seed array of moving averages, we just need to plot it dynamically as with the data array. The code is largely the same as before. We can reuse the x and y scales I used a line instead of an area.</p>
+
+<p>OK, so for one last hurrah, let&#8217;s add a slider so that we can adjust the discount factor.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">The</span> <span class="nx">HTML5</span> <span class="nx">slider</span> <span class="nx">is</span> <span class="nx">basically</span> <span class="nx">perfect</span> <span class="k">for</span> <span class="k">this</span><span class="p">.</span> <span class="nx">All</span> <span class="nx">that</span> <span class="nx">remains</span> <span class="nx">is</span> <span class="nx">to</span> <span class="nx">add</span> <span class="nx">an</span> <span class="nx">event</span> <span class="nx">listener</span><span class="p">.</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;adjust&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;rate&quot;</span> <span class="na">type=</span><span class="s">&quot;range&quot;</span> <span class="na">min=</span><span class="s">&quot;0&quot;</span> <span class="na">max=</span><span class="s">&quot;1&quot;</span> <span class="na">step=</span><span class="s">&quot;.05&quot;</span> <span class="na">value=</span><span class="s">&quot;.5&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p> html
-document.querySelector(&#8220;#rate&#8221;).addEventListener(&#8220;change&#8221;, function() {
-  rate = +document.querySelector(&#8220;#rate&#8221;).value; //look ma, no jQuery!
-}, false);
-&#8220;`</p>
+<p>The HTML5 slider is basically perfect for this. All that remains is to add an event listener.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>document.querySelector(&quot;#rate&quot;).addEventListener(&quot;change&quot;, function() {
+</span><span class='line'>  rate = +document.querySelector(&quot;#rate&quot;).value; //look ma, no jQuery!
+</span><span class='line'>}, false);
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>It&#8217;s that easy. If you play around with the slider, you can see how the moving average changes. When the discounting factor goes to 0, we ignore all new inputs from the data set, resulting in a straight line from the last average value. When it goes to 1, we ignore the average values track the actual data set. I absolutely d3 for stuff like this.</p>
 
