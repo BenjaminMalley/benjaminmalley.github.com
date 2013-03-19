@@ -396,9 +396,9 @@ tick();
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>document.querySelector(&quot;#rate&quot;).addEventListener(&quot;change&quot;, function() {
-</span><span class='line'>  rate = +document.querySelector(&quot;#rate&quot;).value; //look ma, no jQuery!
-</span><span class='line'>}, false);
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#rate&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">rate</span> <span class="o">=</span> <span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#rate&quot;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span> <span class="c1">//look ma, no jQuery!</span>
+</span><span class='line'><span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
