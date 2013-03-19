@@ -108,7 +108,7 @@ var tick = function() {
 tick();
 
 </script>
-Moving averages are a nice, easy to understand technique for dampening fluctuations in time series data to emphasize long term trends. They are used, for example, in networks to assess traffic patterns and deal with congestion. In this post, I'll walk through adding an exponentially weighted moving average to a scrolling time series visualization in d3.
+Moving averages are a nice, easy to understand technique for dampening fluctuations in time series data to emphasize long term trends. They are used, for example, by TCP to establish the timeout window before retransmissions. In this post, I'll walk through adding an exponentially weighted moving average to a scrolling time series visualization in d3.
 
 To begin, we need some time series data. Here I'm going to cheat and just use the random walk function provided [in the d3 tutorial](http://mbostock.github.com/d3/tutorial/bar-2.html).
 
@@ -163,10 +163,8 @@ So how then to update the plot dynamically as new data comes in? We need a repea
 
 ``` javascript
 var tick = function() {
- 
-  var nd = next_data();
 
-  data.push(nd);
+  data.push(next_data());
  
   datapath.attr("d", area)
     .attr("transform", null)
@@ -177,9 +175,10 @@ var tick = function() {
     .each("end", tick);
     
   data.shift();
-}
+};
 ```
 
+The call to ```each``` at the bottom of the method chain waits until the end of the transition and starts the process again. 
 
 Now, onto moving averages. The nice thing about using the exponentially weighted moving average is that it can be computed recursively. We can take advantage of this fact to precompute an array of moving average values from the initial data and then, anytime we need a new moving average value, compute it from the last moving average value. It's easier to see in code:
 
@@ -190,13 +189,13 @@ var next_avg = function(next, prev, discount) {
 };
 ```
 
-Here, ```next``` is the latest data point and ```prev``` is the last moving average that was computed (the element at index ```length - 1``` in the array of averages).
+Here, ```next``` is the latest data point and ```prev``` is the last moving average that was computed (the element at index ```length - 1``` in the array of averages). Note that this is essentially recursion with memoization, with the averages array acting as the buffer.
 
 Just like we did with the initial data, we can use this function to build up an initial array of averages as well.
 
 ``` javascript
 var averages = (function(d, a) {
-  //this is the impossibly long form of reduce :(
+  //this is just an impossibly long form of reduce :(
   var current = d[0]; //base case = first value in the data set
   var avg = []; 
   avg.push(d[0].value);
