@@ -222,7 +222,7 @@ OK, so for one last hurrah, let's add a slider so that we can adjust the discoun
 
 The HTML5 slider is basically perfect for this. All that remains is to add an event listener.
 
-``` html
+``` javascript
 document.querySelector("#rate").addEventListener("change", function() {
   rate = +document.querySelector("#rate").value; //look ma, no jQuery!
 }, false);
