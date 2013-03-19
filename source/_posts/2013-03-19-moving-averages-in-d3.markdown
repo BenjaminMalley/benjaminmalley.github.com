@@ -159,7 +159,7 @@ var datapath = plot.append("path")
 
 The noteworthy bits are ```plot```, which appends an SVG element to an empty div in the DOM, ```area```, which is a built in d3 layout for, you guessed it, area plots and ```datapath``` which binds the data to an SVG path using the area layout that was just defined.
 
-So how then to update the plot dynamically as new data comes in? We need some a repeating function that ```push```es the new data onto the array, ```shift```s off the oldest element and updates the path. The tricky bit involves how d3's interpolators interact with SVG spec and rather than go into it, I'll let Mike himself [explain](http://bost.ocks.org/mike/path/). 
+So how then to update the plot dynamically as new data comes in? We need a repeating function that ```push```es the new data onto the array, ```shift```s off the oldest element and updates the path. The tricky bit involves how d3's interpolators interact with SVG spec and rather than go into it, I'll let Mike himself [explain](http://bost.ocks.org/mike/path/). 
 
 ``` javascript
 var tick = function() {
