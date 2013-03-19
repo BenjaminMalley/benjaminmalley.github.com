@@ -4,7 +4,7 @@
   <title><![CDATA[Clod Computing]]></title>
   <link href="http://BenjaminMalley.github.com/atom.xml" rel="self"/>
   <link href="http://BenjaminMalley.github.com/"/>
-  <updated>2013-03-19T20:54:38+00:00</updated>
+  <updated>2013-03-19T21:05:20+00:00</updated>
   <id>http://BenjaminMalley.github.com/</id>
   <author>
     <name><![CDATA[Benjamin Malley]]></name>
@@ -31,7 +31,7 @@
 <script type="text/javascript">
 
 var n = 100; //number of data elements
-var w = 800; var h = 100; //plot size
+var w = document.querySelector(".entry-content").clientWidth; var h = 100; //plot size
 var rate = .25; //discounting factor
 
 document.querySelector("#rate").addEventListener("change", function() {
