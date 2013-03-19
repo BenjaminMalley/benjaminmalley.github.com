@@ -228,6 +228,6 @@ document.querySelector("#rate").addEventListener("change", function() {
 }, false);
 ```
 
-It's that easy. If you play around with the slider, you can see how the moving average changes. When the discounting factor goes to 0, we ignore all new inputs from the data set, resulting in a straight line from the last average value. When it goes to 1, we ignore the average values track the actual data set. I absolutely d3 for stuff like this.
+It's that easy. If you play around with the slider, you can see how the moving average changes. When the discounting factor goes to 0, we ignore all new inputs from the data set, resulting in a straight line from the last average value. When it goes to 1, we ignore the average values and just track the actual data set. I absolutely d3 for stuff like this.
 
 The code for this post is available [here](https://gist.github.com/BenjaminMalley/5199759).
