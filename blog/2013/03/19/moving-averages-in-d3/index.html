@@ -214,7 +214,7 @@ tick();
 </script>
 
 
-<p>Moving averages are a nice, easy to understand technique for dampening fluctuations in time series data to emphasize long term trends. They are used, for example, in networks to assess traffic patterns and deal with congestion. In this post, I&#8217;ll walk through adding an exponentially weighted moving average to a scrolling time series visualization in d3.</p>
+<p>Moving averages are a nice, easy to understand technique for dampening fluctuations in time series data to emphasize long term trends. They are used, for example, by TCP to establish the timeout window before retransmissions. In this post, I&#8217;ll walk through adding an exponentially weighted moving average to a scrolling time series visualization in d3.</p>
 
 <p>To begin, we need some time series data. Here I&#8217;m going to cheat and just use the random walk function provided <a href="http://mbostock.github.com/d3/tutorial/bar-2.html">in the d3 tutorial</a>.</p>
 
@@ -313,13 +313,9 @@ tick();
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">tick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">nd</span> <span class="o">=</span> <span class="nx">next_data</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">data</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">nd</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">data</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">next_data</span><span class="p">());</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="nx">datapath</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="nx">area</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
@@ -330,9 +326,11 @@ tick();
 </span><span class='line'>    <span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="nx">tick</span><span class="p">);</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="nx">data</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
-</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>The call to <code>each</code> at the bottom of the method chain waits until the end of the transition and starts the process again.</p>
 
 <p>Now, onto moving averages. The nice thing about using the exponentially weighted moving average is that it can be computed recursively. We can take advantage of this fact to precompute an array of moving average values from the initial data and then, anytime we need a new moving average value, compute it from the last moving average value. It&#8217;s easier to see in code:</p>
 
@@ -347,7 +345,7 @@ tick();
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Here, <code>next</code> is the latest data point and <code>prev</code> is the last moving average that was computed (the element at index <code>length - 1</code> in the array of averages).</p>
+<p>Here, <code>next</code> is the latest data point and <code>prev</code> is the last moving average that was computed (the element at index <code>length - 1</code> in the array of averages). Note that this is essentially recursion with memoization, with the averages array acting as the buffer.</p>
 
 <p>Just like we did with the initial data, we can use this function to build up an initial array of averages as well.</p>
 
@@ -363,7 +361,7 @@ tick();
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">averages</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">//this is the impossibly long form of reduce :(</span>
+</span><span class='line'>  <span class="c1">//this is just an impossibly long form of reduce :(</span>
 </span><span class='line'>  <span class="kd">var</span> <span class="nx">current</span> <span class="o">=</span> <span class="nx">d</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">//base case = first value in the data set</span>
 </span><span class='line'>  <span class="kd">var</span> <span class="nx">avg</span> <span class="o">=</span> <span class="p">[];</span>
 </span><span class='line'>  <span class="nx">avg</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">d</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">);</span>
