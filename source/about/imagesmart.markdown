@@ -11,7 +11,7 @@ Although many of the technological hurdles to reducing inappropriate imaging hav
 
 To solve this problem, in 2012 I led the development of a proposal to reduce inappropriate imaging in a primary care setting through patient education, clinical decision support and health information exchange. In July of 2012, Altarum was awarded an <a href="http://innovation.cms.gov/initiatives/Health-Care-Innovation-Awards/Michigan.html">$8 million innovation grant</a> from CMS to carry out this program over a three year period.
 
-As part of this grant, we are building a clinical decision support system and information exchange which is better integrated with the physician workflow. I am directly responsible for user research, prototyping and front development of the clinical decision support system.
+As part of this grant, we are building a clinical decision support system and information exchange which is better integrated with the physician workflow. I am directly responsible for user research, prototyping and front end development of the clinical decision support system.
 
 To fully understand the needs and motivations of our system's potential users, I conducted interviews and observation sessions with physicians, nurses and medical assistants in Michigan, identified key themes and developed personas and scenarios. With that research, I began developing prototypes which we showed to physicians to gauge their effectiveness.
 
