@@ -297,7 +297,7 @@ tick();
 
 <p>The noteworthy bits are <code>plot</code>, which appends an SVG element to an empty div in the DOM, <code>area</code>, which is a built in d3 layout for, you guessed it, area plots and <code>datapath</code> which binds the data to an SVG path using the area layout that was just defined.</p>
 
-<p>So how then to update the plot dynamically as new data comes in? We need some a repeating function that <code>push</code>es the new data onto the array, <code>shift</code>s off the oldest element and updates the path. The tricky bit involves how d3&#8217;s interpolators interact with SVG spec and rather than go into it, I&#8217;ll let Mike himself <a href="http://bost.ocks.org/mike/path/">explain</a>.</p>
+<p>So how then to update the plot dynamically as new data comes in? We need a repeating function that <code>push</code>es the new data onto the array, <code>shift</code>s off the oldest element and updates the path. The tricky bit involves how d3&#8217;s interpolators interact with SVG spec and rather than go into it, I&#8217;ll let Mike himself <a href="http://bost.ocks.org/mike/path/">explain</a>.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
