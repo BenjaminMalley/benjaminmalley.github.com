@@ -6,14 +6,14 @@ categories:
 ---
 <div id="plot"></div>
 <form id="adjust">
-  <input id="rate" type="range" min="0" max="1" step=".05" value=".5">
+  <input id="rate" type="range" min="0" max="1" step=".05" value=".25">
 </form>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript">
 
 var n = 100; //number of data elements
 var w = 800; var h = 100; //plot size
-var rate = .2; //discounting factor
+var rate = .25; //discounting factor
 
 document.querySelector("#rate").addEventListener("change", function() {
   rate = +document.querySelector("#rate").value; //look ma, no jQuery!
@@ -162,8 +162,24 @@ The noteworthy bits are ```plot```, which appends an SVG element to an empty div
 So how then to update the plot dynamically as new data comes in? We need some a repeating function that ```push```es the new data onto the array, ```shift```s off the oldest element and updates the path. The tricky bit involves how d3's interpolators interact with SVG spec and rather than go into it, I'll let Mike himself [explain](http://bost.ocks.org/mike/path/). 
 
 ``` javascript
+var tick = function() {
+ 
+  var nd = next_data();
 
+  data.push(nd);
+ 
+  datapath.attr("d", area)
+    .attr("transform", null)
+    .transition()
+    .duration(200)
+    .ease("linear")
+    .attr("transform", "translate(" + x(-1) + ")")
+    .each("end", tick);
+    
+  data.shift();
+}
 ```
+
 
 Now, onto moving averages. The nice thing about using the exponentially weighted moving average is that it can be computed recursively. We can take advantage of this fact to precompute an array of moving average values from the initial data and then, anytime we need a new moving average value, compute it from the last moving average value. It's easier to see in code:
 
