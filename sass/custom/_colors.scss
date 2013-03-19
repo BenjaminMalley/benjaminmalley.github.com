@@ -113,6 +113,24 @@ header[role="banner"] {
   color: #FFF;
   text-decoration: none;
 }
+
+.data {
+  stroke: #E66101;
+  stroke-width: 2;
+  fill: #FEE0B6;
+}
+.average {
+  stroke: #5E3C99;
+  fill: none;
+  stroke-width: 2;
+}
+#plot, #adjust {
+  width: 800px;
+  margin: auto;
+}
+#rate {
+  width: 800px;
+}
 /* To use the light Solarized highlighting theme uncomment the following line */
 //$solarized: light;
 
