@@ -12,7 +12,7 @@ categories:
 <script type="text/javascript">
 
 var n = 100; //number of data elements
-var w = 800; var h = 100; //plot size
+var w = document.querySelector(".entry-content").clientWidth; var h = 100; //plot size
 var rate = .25; //discounting factor
 
 document.querySelector("#rate").addEventListener("change", function() {
