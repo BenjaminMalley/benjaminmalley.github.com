@@ -9,7 +9,7 @@ I am a **software developer** and **user researcher** which broadly means that I
 
 I am currently an analyst and consultant at Altarum in Ann Arbor, MI where I **advise clients** on the workflow impact, user experience and population-level health outcomes of health information systems and **build new systems** to address these needs. I am looking to relocate to Portland, OR in 2013.
 
-Take a look at some of my current and previous projects below.
+Take a look at my <a href="/assets/Benjamin%20Malley%20-%20Resume.pdf">resume</a>, my <a href="http:/github.com/BenjaminMalley">github</a> and some of my current and previous projects below.
 
 <div class="grid">
   <div class="cell">
