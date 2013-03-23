@@ -49,6 +49,16 @@ design tasks by providing just-in-time context-aware help.</p>
   </div>
   <div class="cell">
     <div class="cell-inner">
+      <div class="badge" id="imagesmart">
+        <div class="project_title">
+          <a href="imagesmart.html">ImageSmart</a>
+        </div>
+      </div>
+      <p>I am currently designing a clinical decision support system to empower physicians and reduce patient demand for inappropriate medicine.</p>
+    </div>
+  </div>
+  <div class="cell">
+    <div class="cell-inner">
       <div class="badge" id="feedback">
         <div class="project_title">
           <a href="feedback.html">Feedback Channels</a>
@@ -57,16 +67,6 @@ design tasks by providing just-in-time context-aware help.</p>
       <p>As part of a 5-person team, I designed a web application that
 allows students to give feedback and ask questions during lectures
 without interrupting class</p>
-    </div>
-  </div>
-  <div class="cell">
-    <div class="cell-inner">
-      <div class="badge" id="imagesmart">
-        <div class="project_title">
-          <a href="imagesmart.html">ImageSmart</a>
-        </div>
-      </div>
-      <p>I am currently designing a clinical decision support system to empower physicians and reduce patient demand for inappropriate medicine.</p>
     </div>
   </div>
   <div class="cell">
