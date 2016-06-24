@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://BenjaminMalley.github.com/sitemap.xml 
